@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfCustomUserControls.Properties {
+namespace NewellClark.Wpf.UserControls.Properties {
+    using System;
     
     
     /// <summary>
@@ -37,8 +38,8 @@ namespace WpfCustomUserControls.Properties {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if ((resourceMan == null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfCustomUserControls.Properties.Resources", typeof(Resources).Assembly);
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NewellClark.Wpf.UserControls.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
