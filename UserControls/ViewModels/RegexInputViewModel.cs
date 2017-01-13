@@ -14,6 +14,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		public RegexInputViewModel()
 		{
 			_flagBools = new List<FlagBool>();
+			_dirtyProperties = new HashSet<string>();
 
 			_ignoreCase = CreateFlag(RegexOptions.IgnoreCase);
 			_multiline = CreateFlag(RegexOptions.Multiline);
@@ -26,12 +27,41 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			_cultureInvariant = CreateFlag(RegexOptions.CultureInvariant);
 		}
 
+		public Regex Value
+		{
+			get { return _value; }
+			set { UpdateValue(value); }
+		}
+		private Regex _value;
+
+		public string Pattern
+		{
+			get { return _pattern; }
+			set { SetField(ref _pattern, value); }
+		}
+		private string _pattern;
+
+		public bool IsValid
+		{
+			get { return _isValid; }
+			private set { SetField(ref _isValid, value); }
+		}
+		private bool _isValid;
+
 		public RegexOptions Options
 		{
 			get { return _options; }
 			set
 			{
-				UpdateOptions(value);
+				foreach (FlagBool flag in _flagBools)
+				{
+					RegexOptions next = flag.ValueWhenEnabled & value;
+					RegexOptions current = flag.ValueWhenEnabled & _options;
+					if (next != current)
+						SetDirty(flag.Name);
+				}
+
+				SetField(ref _options, value);
 			}
 		}
 		private RegexOptions _options;
@@ -71,7 +101,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		}
 		private FlagBool _singleline;
 
-		public bool IgnorePatternWhiteSpace
+		public bool IgnorePatternWhitespace
 		{
 			get { return _ignorePatternWhiteSpace.Enabled; }
 			set { _ignorePatternWhiteSpace.Enabled = value; }
@@ -102,29 +132,99 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		public event PropertyChangedEventHandler PropertyChanged;
 
 
-		private void UpdateOptions(RegexOptions options)
-		{
-			if (_options == options)
-				return;
+		//private void UpdateProperties(RegexOptions options)
+		//{
+			//if (_options == options)
+			//	return;
 
-			var dirtyFlags = new List<FlagBool>();
-			foreach (var flag in _flagBools)
+			//var dirtyFlags = new List<FlagBool>();
+			//foreach (var flag in _flagBools)
+			//{
+			//	var current = flag.ValueWhenEnabled & options;
+			//	var previous = flag.ValueWhenEnabled & _options;
+			//	if (current != previous)
+			//		dirtyFlags.Add(flag);
+			//}
+
+			//_options = options;
+
+			//foreach (var flag in dirtyFlags)
+			//	PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(flag.Name));
+		//}
+
+		private void UpdateProperties()
+		{
+			_isUpdating = true;
+
+			SetValueSwallowExceptions(_pattern, _options);
+			IsValid = Value != null;
+			RaiseEventsOnDirtyProperties();
+
+			_isUpdating = false;
+		}
+
+		private void UpdateValue(Regex value)
+		{
+			_isUpdating = true;
+
+			if (!SetField(ref _value, value, nameof(Value)))
 			{
-				var current = flag.ValueWhenEnabled & options;
-				var previous = flag.ValueWhenEnabled & _options;
-				if (current != previous)
-					dirtyFlags.Add(flag);
+				_isUpdating = true;
+				return;
 			}
 
-			_options = options;
+			if (_value != null)
+			{
+				Options = _value.Options;
+				Pattern = _value.ToString();
+			}
 
-			foreach (var flag in dirtyFlags)
-				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(flag.Name));
+			RaiseEventsOnDirtyProperties();
+
+			_isUpdating = false;
 		}
 
 		private bool SetField<T>(ref T field, T value, [CallerMemberName]string name = "")
 		{
-			return Common.SetField(PropertyChanged, ref field, value, name);
+			//return Common.SetField(PropertyChanged, ref field, value, name);
+			if (EqualityComparer<T>.Default.Equals(field, value))
+				return false;
+			field = value;
+			SetDirty(name);
+			if (!_isUpdating)
+				UpdateProperties();
+			return true;
+		}
+
+		private void SetDirty(string propertyName)
+		{
+			_dirtyProperties.Add(propertyName);
+		}
+
+		private void RaiseEventsOnDirtyProperties()
+		{
+			foreach (string dirtyName in _dirtyProperties)
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(dirtyName));
+
+			_dirtyProperties.Clear();
+		}
+
+		private void SetValueSwallowExceptions(string pattern, RegexOptions options)
+		{
+			Regex result;
+			try
+			{
+				result = new Regex(pattern, options);
+			}
+			catch (ArgumentNullException)
+			{
+				result = null;
+			}
+			catch (ArgumentException)
+			{
+				result = null;
+			}
+			Value = result;
 		}
 
 		private FlagBool CreateFlag(RegexOptions valueWhenEnabled)
@@ -174,5 +274,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		}
 
 		private List<FlagBool> _flagBools;
+		private HashSet<string> _dirtyProperties;
+		private bool _isUpdating = false;
 	}
 }
