@@ -110,9 +110,6 @@
     <Compile Include="TypeConverters\BooleanToBrushConverter.cs" />
     <Compile Include="TypeConverters\BooleanToToggleConverter.cs" />
     <Compile Include="ViewModels\RegexViewModel.cs" />
-    <Compile Include="Views\RegexInput2.xaml.cs">
-      <DependentUpon>RegexInput2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RegexInputWidgetHorizontal.xaml.cs">
       <DependentUpon>RegexInputWidgetHorizontal.xaml</DependentUpon>
     </Compile>
@@ -130,10 +127,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\RegexInput2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\RegexInputWidgetHorizontal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
