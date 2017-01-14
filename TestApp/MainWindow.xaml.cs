@@ -24,6 +24,7 @@ namespace TestApp
 		public MainWindow()
 		{
 			InitializeComponent();
+			
 		}
 
 		private void expander_Expanded(object sender, RoutedEventArgs e)
