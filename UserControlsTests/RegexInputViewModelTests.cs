@@ -13,13 +13,13 @@ using static UserControlsTests.Common;
 namespace UserControlsTests
 {
 	[TestFixture]
-	public class RegexInputViewModelTests
+	public class RegexViewModelTests
 	{
 		[Test]
 		public void Options_SetsBooleans()
 		{
 			RegexOptions options = Multiline | IgnoreCase | Compiled;
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 			vm.Options = options;
 
 			Assert.That(vm.Multiline);
@@ -30,7 +30,7 @@ namespace UserControlsTests
 		[Test]
 		public void Booleans_SetOptions()
 		{
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 			vm.RightToLeft = vm.Singleline = vm.ECMAScript = true;
 			RegexOptions expected = RightToLeft | Singleline | ECMAScript;
 
@@ -40,7 +40,7 @@ namespace UserControlsTests
 		[Test]
 		public void Booleans_RaisePropertyChangedEvent()
 		{
-			RegexInputViewModel vm = new RegexInputViewModel();
+			RegexViewModel vm = new RegexViewModel();
 			vm.ExplicitCapture = false;
 
 			AssertPropertyChangedEventWorks(
@@ -51,7 +51,7 @@ namespace UserControlsTests
 		public void IsValid_FalseWhenPatternIsNotValidRegex()
 		{
 			string _badPattern = @"hell[0o";
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 
 			vm.Pattern = _badPattern;
 
@@ -62,7 +62,7 @@ namespace UserControlsTests
 		public void IsValid_TrueWhenPatternIsValidRegex()
 		{
 			string _goodPattern = "hell[0o]";
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 
 			vm.Pattern = _goodPattern;
 
@@ -73,7 +73,7 @@ namespace UserControlsTests
 		public void Value_UpdatesWithPatternChange()
 		{
 			string pattern = @"<[a-z]>";
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 
 			vm.Pattern = pattern;
 
@@ -84,7 +84,7 @@ namespace UserControlsTests
 		public void Pattern_UpdatesWithValueChange()
 		{
 			string pattern = "<[a-z0-9]>";
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 
 			vm.Value = new Regex(pattern);
 
@@ -96,7 +96,7 @@ namespace UserControlsTests
 		{
 			RegexOptions options = IgnoreCase | CultureInvariant;
 			Regex regex = new Regex("gr[ae]y", options);
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 
 			vm.Value = regex;
 
@@ -107,7 +107,7 @@ namespace UserControlsTests
 		public void Value_NullWhenPatternInvalid()
 		{
 			string pattern = "gr(a|e)yback[";
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 
 			vm.Pattern = pattern;
 
@@ -119,7 +119,7 @@ namespace UserControlsTests
 		public void Pattern_FiresAllEvents()
 		{
 			string pattern = @"gr(a|e)y";
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 
 			AssertPropertyChangedEventFires(
 				vm,
@@ -136,7 +136,7 @@ namespace UserControlsTests
 				RegexOptions.RightToLeft |
 				RegexOptions.Singleline |
 				RegexOptions.ExplicitCapture;
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 			vm.Pattern = "hello world [0-9]+";
 			var changingProperties = new string[]
 			{
@@ -161,7 +161,7 @@ namespace UserControlsTests
 				RegexOptions.ECMAScript |
 				RegexOptions.Multiline |
 				RegexOptions.IgnorePatternWhitespace;
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 			string[] dependantProperties = new string[]
 			{
 				nameof (vm.Compiled),
@@ -179,7 +179,7 @@ namespace UserControlsTests
 		[Test]
 		public void Value_FiresAllEvents_WhenSetToNonNullFromNonNull()
 		{
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 			vm.Value = new Regex($"[a4A][lIi]", RegexOptions.Multiline);
 			string pattern = "(h.+)*[aeiou]";
 			RegexOptions options =
@@ -208,7 +208,7 @@ namespace UserControlsTests
 		[Test]
 		public void Value_FiresAllEvents_WhenSetToNonNullFromNull()
 		{
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 			Regex regex = new Regex(
 				@"<[a-z0-9]+>",
 				IgnoreCase | IgnorePatternWhitespace | Multiline);
@@ -232,7 +232,7 @@ namespace UserControlsTests
 			string pattern = @"hell[0o]+\s+world!";
 			RegexOptions options = RegexOptions.IgnoreCase | RegexOptions.RightToLeft;
 
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 			vm.Value = new Regex(pattern, options);
 
 			AssertPropertyChangedEventFires(
@@ -245,7 +245,7 @@ namespace UserControlsTests
 		public void Pattern_RemembersPatternWhenValueSetToNullExplicitly()
 		{
 			string pattern = @"[0-9]{5}";
-			var vm = new RegexInputViewModel();
+			var vm = new RegexViewModel();
 			vm.Value = new Regex(pattern);
 
 			AssertPropertyChangedEventFires(

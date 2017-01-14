@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace NewellClark.Wpf.UserControls.ViewModels
 {
-	internal class RegexInputViewModel : INotifyPropertyChanged
+	public sealed class RegexViewModel : INotifyPropertyChanged
 	{
-		public RegexInputViewModel()
+		public RegexViewModel()
 		{
 			_flagBools = new List<FlagBool>();
 			_dirtyProperties = new HashSet<string>();
@@ -132,26 +132,6 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		public event PropertyChangedEventHandler PropertyChanged;
 
 
-		//private void UpdateProperties(RegexOptions options)
-		//{
-			//if (_options == options)
-			//	return;
-
-			//var dirtyFlags = new List<FlagBool>();
-			//foreach (var flag in _flagBools)
-			//{
-			//	var current = flag.ValueWhenEnabled & options;
-			//	var previous = flag.ValueWhenEnabled & _options;
-			//	if (current != previous)
-			//		dirtyFlags.Add(flag);
-			//}
-
-			//_options = options;
-
-			//foreach (var flag in dirtyFlags)
-			//	PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(flag.Name));
-		//}
-
 		private void UpdateProperties()
 		{
 			_isUpdating = true;
@@ -240,7 +220,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		/// </summary>
 		private class FlagBool
 		{
-			public FlagBool(RegexInputViewModel outer, RegexOptions valueWhenEnabled)
+			public FlagBool(RegexViewModel outer, RegexOptions valueWhenEnabled)
 			{
 				_outer = outer;
 				ValueWhenEnabled = valueWhenEnabled;
@@ -270,7 +250,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 
 			public string Name { get; }
 
-			private RegexInputViewModel _outer;
+			private RegexViewModel _outer;
 		}
 
 		private List<FlagBool> _flagBools;
