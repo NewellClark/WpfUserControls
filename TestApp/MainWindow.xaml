@@ -6,8 +6,8 @@
 		xmlns:local="clr-namespace:TestApp"
 		xmlns:Views="clr-namespace:NewellClark.Wpf.UserControls.Views;assembly=WpfCustomUserControls" xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid" x:Class="TestApp.MainWindow"
 		mc:Ignorable="d"
-		Title="MainWindow" Height="387" Width="522.645">
+		Title="MainWindow" Height="226" Width="575.645">
 	<Grid>
-		<Views:RegexInputControl Margin="10"/>
+		<Views:SingleLineRegexInputControl Margin="10" Loaded="SingleLineRegexInputControl_Loaded"/>
 	</Grid>
 </Window>

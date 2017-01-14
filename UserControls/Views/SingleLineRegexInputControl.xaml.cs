@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace NewellClark.Wpf.UserControls.Views
 {
 	/// <summary>
-	/// Interaction logic for RegexInputControl.xaml
+	/// Interaction logic for SingleLineRegexInputControl.xaml
 	/// </summary>
-	public partial class RegexInputControl : UserControl
+	public partial class SingleLineRegexInputControl : UserControl
 	{
-		public RegexInputControl()
+		public SingleLineRegexInputControl()
 		{
 			InitializeComponent();
 		}

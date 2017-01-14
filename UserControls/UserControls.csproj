@@ -108,8 +108,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\RegexViewModel.cs" />
-    <Compile Include="Views\RegexInputControl.xaml.cs">
-      <DependentUpon>RegexInputControl.xaml</DependentUpon>
+    <Compile Include="Views\SingleLineRegexInputControl.xaml.cs">
+      <DependentUpon>SingleLineRegexInputControl.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -125,7 +125,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\RegexInputControl.xaml">
+    <Page Include="Views\SingleLineRegexInputControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

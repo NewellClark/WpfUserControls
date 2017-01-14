@@ -29,5 +29,10 @@ namespace TestApp
 		{
 
 		}
+
+		private void SingleLineRegexInputControl_Loaded(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
