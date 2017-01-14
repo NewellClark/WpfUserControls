@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewellClark.Wpf.UserControls.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace TestApp
 
 		private void expander_Expanded(object sender, RoutedEventArgs e)
 		{
-
+			
 		}
 
 		private void SingleLineRegexInputControl_Loaded(object sender, RoutedEventArgs e)

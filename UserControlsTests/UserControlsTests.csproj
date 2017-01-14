@@ -35,9 +35,11 @@
       <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BooleanToToggleConverterTests.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="CommonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
