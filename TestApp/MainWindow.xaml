@@ -38,6 +38,12 @@
 
 				</Grid>
 			</TabItem>
+			<TabItem Header="Single line regex input">
+				<Grid>
+					<Views:SingleLineRegexInputWidget HorizontalAlignment="Left" Margin="145,82,0,0" VerticalAlignment="Top" Width="177"/>
+
+				</Grid>
+			</TabItem>
 		</TabControl>
 	</Grid>
 </Window>

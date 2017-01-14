@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="NewellClark.Wpf.UserControls.Views.SingleLineRegexInputWidget"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:NewellClark.Wpf.UserControls.Views"
+			 xmlns:vms="clr-namespace:NewellClark.Wpf.UserControls.ViewModels"
+			 xmlns:resx="clr-namespace:NewellClark.Wpf.UserControls.Properties"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="25" d:DesignWidth="400">
+	<UserControl.DataContext>
+		<vms:RegexViewModel/>
+	</UserControl.DataContext>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+		<TextBox Name="pattern"></TextBox>
+		<ComboBox Name="optionsSelector" Grid.Column="1" 
+				  SelectedIndex="0" IsReadOnly="True"
+				  SelectionChanged="optionsSelector_SelectionChanged">
+			<ComboBoxItem Content="{x:Static resx:Resources.regexOptions}"/>
+		</ComboBox>
+	</Grid>
+</UserControl>
