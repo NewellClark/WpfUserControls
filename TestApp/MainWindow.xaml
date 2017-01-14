@@ -6,8 +6,38 @@
 		xmlns:local="clr-namespace:TestApp"
 		xmlns:Views="clr-namespace:NewellClark.Wpf.UserControls.Views;assembly=WpfCustomUserControls" xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid" x:Class="TestApp.MainWindow"
 		mc:Ignorable="d"
-		Title="MainWindow" Height="382" Width="651.645">
+		Title="MainWindow" Height="382" Width="708.645">
 	<Grid>
-		<Views:SingleLineRegexInputControl HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="96" Width="527"/>
+		<TabControl Margin="10">
+			<TabItem Header="Basic Binding Tests">
+				<Grid>
+					<Views:RegexInputWidgetHorizontal Name="regexInput_basicBindingTest"
+						Margin="10,10,10,193" Width="Auto" Height="Auto"/>
+					<Button 
+						IsEnabled="{Binding ElementName=regexInput_basicBindingTest, Path=IsValid, Mode=OneWay}"
+						Name="submitButton_basicBindingTests" Content="Submit" 
+						HorizontalAlignment="Left" Margin="472,115,0,0" 
+						VerticalAlignment="Top" Width="193" Height="26"/>
+
+				</Grid>
+			</TabItem>
+			<TabItem Header="Illegal Binding Tests">
+				<Grid>
+					<Views:RegexInputWidgetHorizontal Name="regexInput_illegalBindingTests"
+						HorizontalAlignment="Left" Margin="10,10,0,0" 
+													  VerticalAlignment="Top" Width="655"/>
+					<CheckBox x:Name="isValidCheckBox_illegalBindingTests" 
+							  Content="I am illegally two-way bound to a read-only CLR property backed by a private Dependency Property" 
+							  IsChecked="{Binding ElementName=regexInput_illegalBindingTests,
+						Path=IsValid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+							  HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top"/>
+					<CheckBox Content="I am only one-way bound to the read-only IsValid property" 
+							  HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top"
+							  IsChecked="{Binding ElementName=regexInput_illegalBindingTests,
+						Path=IsValid, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+				</Grid>
+			</TabItem>
+		</TabControl>
 	</Grid>
 </Window>

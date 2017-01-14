@@ -35,6 +35,10 @@ namespace NewellClark.Wpf.UserControls.Views
 			_viewModel = new RegexViewModel();
 			DataContext = _viewModel;
 
+			var isValidBinding = new Binding(nameof(_viewModel.IsValid));
+			isValidBinding.Mode = BindingMode.OneWay;
+			SetBinding(IsValidProperty, isValidBinding);
+
 			var textBinding = new Binding(nameof(_viewModel.IsValid));
 			textBinding.Mode = BindingMode.OneWay;
 			textBinding.Converter = _textColorConverter;
@@ -43,18 +47,16 @@ namespace NewellClark.Wpf.UserControls.Views
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public Regex Value
+		public Regex Regex
 		{
-			get { return _viewModel?.Value; }
-			set {
-				_viewModel.Value = value;
-			}
+			get { return (Regex)GetValue(RegexProperty); }
+			set { SetValue(RegexProperty, value); }
 		}
 		
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public bool IsValid
 		{
-			get { return _viewModel?.IsValid == true; }
+			get { return (bool)GetValue(IsValidProperty); }
 		}
 
 		public Color TextWhenValid
@@ -68,6 +70,12 @@ namespace NewellClark.Wpf.UserControls.Views
 			get { return _textColorConverter.FalseColor; }
 			set { _textColorConverter.FalseColor = value; }
 		}
+
+		public static readonly DependencyProperty RegexProperty = DependencyProperty.Register(
+			nameof(Regex), typeof(Regex), typeof(RegexInputWidgetHorizontal));
+
+		private static readonly DependencyProperty IsValidProperty = DependencyProperty.Register(
+			nameof(IsValid), typeof(bool), typeof(RegexInputWidgetHorizontal));
 
 		private RegexViewModel _viewModel;
 		private BooleanToColorBrushConverter _textColorConverter;
