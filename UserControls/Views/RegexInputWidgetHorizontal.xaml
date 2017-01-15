@@ -6,6 +6,7 @@
 			 xmlns:local="clr-namespace:NewellClark.Wpf.UserControls.Views"
 			 xmlns:vms="clr-namespace:NewellClark.Wpf.UserControls.ViewModels"
 			 xmlns:converters="clr-namespace:NewellClark.Wpf.UserControls.TypeConverters"
+			 xmlns:resx="clr-namespace:NewellClark.Wpf.UserControls.Properties"
 			 xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 			 mc:Ignorable="d" 
 			 d:DesignHeight="100" d:DesignWidth="400"
@@ -38,25 +39,33 @@
 		<GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"></GridSplitter>
 		<ScrollViewer Grid.Column="2">
 			<WrapPanel Orientation="Vertical">
-				<CheckBox Name="ignoreCase" 
-					  IsChecked="{Binding IgnoreCase, Mode=TwoWay}">Ignore case</CheckBox>
+				<CheckBox Name="ignoreCase"
+						  IsChecked="{Binding IgnoreCase, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_ignoreCase}"/>
 				<CheckBox Name="multiline"
-					  IsChecked="{Binding Multiline, Mode=TwoWay}">Multiline</CheckBox>
+						  IsChecked="{Binding Multiline, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_multiline}"/>
 				<CheckBox Name="explicitCapture"
-					  IsChecked="{Binding ExplicitCapture, Mode=TwoWay}">Explicit capture</CheckBox>
+						  IsChecked="{Binding ExplicitCapture, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_explicitCapture}"/>
 				<CheckBox Name="compiled"
-					  IsChecked="{Binding Compiled, Mode=TwoWay}">Compiled</CheckBox>
-				<CheckBox Name="singleline"
-					  IsChecked="{Binding Singleline, Mode=TwoWay}">Singleline</CheckBox>
-				<CheckBox Name="rightToLeft"
-					  IsChecked="{Binding RightToLeft, Mode=TwoWay}">Right-to-left</CheckBox>
-				<CheckBox Name="ecmaScript"
-					  IsChecked="{Binding ECMAScript, Mode=TwoWay}">ECMA script</CheckBox>
-				<CheckBox Name="cultureInvariant"
-					  IsChecked="{Binding CultureInvariant, Mode=TwoWay}">Culture invariant</CheckBox>
+						  IsChecked="{Binding Compiled, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_compiled}"/>
+				<CheckBox Name="singleline" 
+						  IsChecked="{Binding Singleline, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_singleline}"/>
 				<CheckBox Name="ignorePatternWhitespace"
-					  IsChecked="{Binding IgnorePatternWhitespace, 
-					Mode=TwoWay}">Ignore pattern whitespace</CheckBox>
+						  IsChecked="{Binding IgnorePatternWhitespace}"
+						  Content="{x:Static resx:Resources.regexOptions_ignorePatternWhitespace}"/>
+				<CheckBox Name="rightToLeft" 
+						  IsChecked="{Binding RightToLeft, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_rightToLeft}"/>
+				<CheckBox Name="ecmaScript"
+						  IsChecked="{Binding ECMAScript, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_ecmaScript}"/>
+				<CheckBox Name="cultureInvariant"
+						  IsChecked="{Binding CultureInvariant, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_cultureInvariant}"/>
 			</WrapPanel>
 		</ScrollViewer>
 	</Grid>
