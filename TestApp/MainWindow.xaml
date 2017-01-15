@@ -20,31 +20,27 @@
 
 				</Grid>
 			</TabItem>
-			<TabItem Header="Illegal Binding Tests">
-				<Grid>
-					<Views:RegexInputWidgetHorizontal Name="regexInput_illegalBindingTests"
-						HorizontalAlignment="Left" Margin="10,10,0,0" 
-													  VerticalAlignment="Top" Width="655"/>
-					<CheckBox x:Name="isValidCheckBox_illegalBindingTests" 
-							  Content="I am illegally two-way bound to a read-only CLR property backed by a private Dependency Property" 
-							  IsChecked="{Binding ElementName=regexInput_illegalBindingTests,
-						Path=IsValid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-							  HorizontalAlignment="Left" Margin="10,115,0,0" VerticalAlignment="Top"/>
-					<CheckBox Content="I am only one-way bound to the read-only IsValid property" 
-							  HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top"
-							  IsChecked="{Binding ElementName=regexInput_illegalBindingTests,
-						Path=IsValid, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-				</Grid>
-			</TabItem>
 			<TabItem Header="Single line regex input">
 				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*"></ColumnDefinition>
-					</Grid.ColumnDefinitions>
-					<Views:SingleLineRegexInputWidget HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+					<Views:SingleLineRegexInputWidget HorizontalAlignment="Left" Margin="10,10,0,0" 
+							VerticalAlignment="Top"/>
 				</Grid>
 			</TabItem>
+			<TabItem Header="Runtime (Invalid|Valid)TextColor Binding Test">
+				<Grid>
+					<Views:RegexInputWidgetHorizontal Name="colorBindingRealTimeTest"
+						Margin="10,10,10,0" Height="100" VerticalAlignment="Top"
+						BorderThickness="4" ValidTextColor="#FF0C00FF"
+						/>
+					<Button x:Name="validGreen" Content="Valid" 
+							HorizontalAlignment="Left" Margin="153,128,0,0" 
+							VerticalAlignment="Top" Width="75" Background="#FF00FB17" Click="validGreen_Click"/>
+					<Button x:Name="validBlue" Content="Valid" Width="75" Margin="233,128,430,165" Background="#FF000CFF"/>
+				</Grid>
+			</TabItem>
+
+			<Button x:Name="button1" Content="Button" Height="49" Width="77"/>
 		</TabControl>
 	</Grid>
 </Window>

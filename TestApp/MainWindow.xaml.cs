@@ -36,5 +36,14 @@ namespace TestApp
 		{
 
 		}
+
+		private void invalidColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
+		{
+		}
+
+		private void validGreen_Click(object sender, RoutedEventArgs e)
+		{
+			colorBindingRealTimeTest.ValidTextColor = Colors.Green;
+		}
 	}
 }
