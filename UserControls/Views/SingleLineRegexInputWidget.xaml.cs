@@ -20,24 +20,43 @@ using System.Windows.Shapes;
 namespace NewellClark.Wpf.UserControls.Views
 {
 	/// <summary>
-	/// Interaction logic for SingleLineRegexInputWidget.xaml
+	/// A UI component that allows the user to enter a regular expression and configure all possible regex options.
+	/// It fits on a single line.
+	/// Provides visual feedback when the user enters an invalid regular expression.
 	/// </summary>
 	public partial class SingleLineRegexInputWidget : UserControl
 	{
 		public SingleLineRegexInputWidget()
 		{
+			_textBrushConverter = new BooleanToToggleConverter<Brush>(
+				new SolidColorBrush(Colors.Black),
+				new SolidColorBrush(Colors.Red));
 			InitializeComponent();
 			_viewModel = new RegexViewModel();
 			DataContext = _viewModel;
+
+			InitializeDesignerOnlyProperties();
+
+			InitializeEventHandlers();
+
+			InitializeTextBoxForegroundBrushBinding();
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public Regex Regex
 		{
-			get { return (Regex)GetValue(RegexProperty); }
+			get { return (Regex)GetValue(_regexPropertyKey.DependencyProperty); }
 		}
-		public static readonly DependencyProperty RegexProperty = 
-			DependencyProperty.Register(nameof(Regex), typeof(Regex), typeof(SingleLineRegexInputWidget));
+		private static readonly DependencyPropertyKey _regexPropertyKey = DependencyProperty.RegisterReadOnly(
+			nameof(Regex), typeof(Regex), typeof(SingleLineRegexInputWidget), new PropertyMetadata(null));
+
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public bool IsValid
+		{
+			get { return (bool)GetValue(_isValidPropertyKey.DependencyProperty); }
+		}
+		private static readonly DependencyPropertyKey _isValidPropertyKey = DependencyProperty.RegisterReadOnly(
+			nameof(IsValid), typeof(bool), typeof(SingleLineRegexInputWidget), new PropertyMetadata(false));
 
 		public Brush ValidTextBrush
 		{
@@ -62,7 +81,46 @@ namespace NewellClark.Wpf.UserControls.Views
 			}
 		}
 
+		private void InitializeTextBoxForegroundBrushBinding()
+		{
+			var binding = new Binding(nameof(_viewModel.IsValid));
+			binding.Mode = BindingMode.OneWay;
+			binding.Converter = _textBrushConverter;
+			binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+			pattern.SetBinding(TextBox.ForegroundProperty, binding);
+		}
+
+		private void InitializeEventHandlers()
+		{
+			_viewModel.PropertyChanged += (o, e) =>
+			{
+				if (e.PropertyName == nameof(_viewModel.IsValid))
+				{
+					SetValue(_isValidPropertyKey, _viewModel.IsValid);
+				}
+			};
+			_viewModel.PropertyChanged += (o, e) =>
+			{
+				if (e.PropertyName == nameof(_viewModel.Value))
+				{
+					SetValue(_regexPropertyKey, _viewModel.Value);
+				}
+			};
+		}
+
+		private void InitializeDesignerOnlyProperties()
+		{
+			_validTextBrush = new DesignerOnlyProperty<Brush>(
+				this,
+				() => _textBrushConverter.True,
+				x => _textBrushConverter.True = x);
+			_invalidTextBrush = new DesignerOnlyProperty<Brush>(
+				this,
+				() => _textBrushConverter.False,
+				x => _textBrushConverter.False = x);
+		}
+
 		private RegexViewModel _viewModel;
-		private BooleanToToggleConverter<Brush> _textConverter;
+		private BooleanToToggleConverter<Brush> _textBrushConverter;
 	}
 }
