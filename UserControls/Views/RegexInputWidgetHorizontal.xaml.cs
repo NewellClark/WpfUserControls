@@ -59,13 +59,13 @@ namespace NewellClark.Wpf.UserControls.Views
 			get { return (bool)GetValue(IsValidProperty); }
 		}
 
-		public Color TextWhenValid
+		public Color ValidTextColor
 		{
 			get { return _textColorConverter.TrueColor; }
 			set { _textColorConverter.TrueColor = value; }
 		}
 
-		public Color TextWhenInvalid
+		public Color InvalidTextColor
 		{
 			get { return _textColorConverter.FalseColor; }
 			set { _textColorConverter.FalseColor = value; }

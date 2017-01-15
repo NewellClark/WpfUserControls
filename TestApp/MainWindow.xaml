@@ -6,18 +6,17 @@
 		xmlns:local="clr-namespace:TestApp"
 		xmlns:Views="clr-namespace:NewellClark.Wpf.UserControls.Views;assembly=WpfCustomUserControls" xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid" x:Class="TestApp.MainWindow"
 		mc:Ignorable="d"
-		Title="MainWindow" Height="382" Width="708.645">
+		Title="MainWindow" Height="548" Width="771.645">
 	<Grid>
-		<TabControl Margin="10">
+		<TabControl Margin="10,10,10,166">
 			<TabItem Header="Basic Binding Tests">
 				<Grid>
 					<Views:RegexInputWidgetHorizontal Name="regexInput_basicBindingTest"
 						Margin="10,10,10,193" Width="Auto" Height="Auto"/>
 					<Button 
 						IsEnabled="{Binding ElementName=regexInput_basicBindingTest, Path=IsValid, Mode=OneWay}"
-						Name="submitButton_basicBindingTests" Content="Submit" 
-						HorizontalAlignment="Left" Margin="472,115,0,0" 
-						VerticalAlignment="Top" Width="193" Height="26"/>
+						Name="submitButton_basicBindingTests" Content="Submit" Margin="0,125,10,0" 
+						VerticalAlignment="Top" Height="26" HorizontalAlignment="Right" Width="193"/>
 
 				</Grid>
 			</TabItem>
@@ -40,8 +39,10 @@
 			</TabItem>
 			<TabItem Header="Single line regex input">
 				<Grid>
-					<Views:SingleLineRegexInputWidget HorizontalAlignment="Left" Margin="145,82,0,0" VerticalAlignment="Top" Width="177"/>
-
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Views:SingleLineRegexInputWidget HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 				</Grid>
 			</TabItem>
 		</TabControl>

@@ -7,7 +7,8 @@
 			 xmlns:vms="clr-namespace:NewellClark.Wpf.UserControls.ViewModels"
 			 xmlns:resx="clr-namespace:NewellClark.Wpf.UserControls.Properties"
 			 mc:Ignorable="d" 
-			 d:DesignHeight="25" d:DesignWidth="400">
+			 d:DesignHeight="25" d:DesignWidth="400"
+			 Width="400" Height="23">
 	<UserControl.DataContext>
 		<vms:RegexViewModel/>
 	</UserControl.DataContext>
@@ -16,11 +17,38 @@
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="Auto"/>
 		</Grid.ColumnDefinitions>
-		<TextBox Name="pattern"></TextBox>
+		<TextBox Name="pattern" Background="White" BorderBrush="#FFABADB3"/>
 		<ComboBox Name="optionsSelector" Grid.Column="1" 
 				  SelectedIndex="0" IsReadOnly="True"
 				  SelectionChanged="optionsSelector_SelectionChanged">
 			<ComboBoxItem Content="{x:Static resx:Resources.regexOptions}"/>
+			<CheckBox Name="ignoreCase"
+						  IsChecked="{Binding IgnoreCase, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_ignoreCase}"/>
+			<CheckBox Name="multiline"
+						  IsChecked="{Binding Multiline, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_multiline}"/>
+			<CheckBox Name="explicitCapture"
+						  IsChecked="{Binding ExplicitCapture, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_explicitCapture}"/>
+			<CheckBox Name="compiled"
+						  IsChecked="{Binding Compiled, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_compiled}"/>
+			<CheckBox Name="singleline" 
+						  IsChecked="{Binding Singleline, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_singleline}"/>
+			<CheckBox Name="ignorePatternWhitespace"
+						  IsChecked="{Binding IgnorePatternWhitespace}"
+						  Content="{x:Static resx:Resources.regexOptions_ignorePatternWhitespace}"/>
+			<CheckBox Name="rightToLeft" 
+						  IsChecked="{Binding RightToLeft, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_rightToLeft}"/>
+			<CheckBox Name="ecmaScript"
+						  IsChecked="{Binding ECMAScript, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_ecmaScript}"/>
+			<CheckBox Name="cultureInvariant"
+						  IsChecked="{Binding CultureInvariant, Mode=TwoWay}"
+						  Content="{x:Static resx:Resources.regexOptions_cultureInvariant}"/>
 		</ComboBox>
 	</Grid>
 </UserControl>
