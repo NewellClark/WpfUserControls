@@ -50,6 +50,10 @@ namespace NewellClark.Wpf.UserControls
 			_setter(value);
 		}
 
+		/// <summary>
+		/// Gets the value of the property.
+		/// </summary>
+		/// <returns></returns>
 		public T Get()
 		{
 			return _getter();

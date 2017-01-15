@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="TypeConverters\BooleanToBrushConverter.cs" />
     <Compile Include="TypeConverters\BooleanToToggleConverter.cs" />
+    <Compile Include="TypeConverters\DebugConverter.cs" />
     <Compile Include="ViewModels\RegexViewModel.cs" />
     <Compile Include="Views\RegexInputWidgetHorizontal.xaml.cs">
       <DependentUpon>RegexInputWidgetHorizontal.xaml</DependentUpon>
