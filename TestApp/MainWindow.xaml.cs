@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,7 +25,10 @@ namespace TestApp
 		public MainWindow()
 		{
 			InitializeComponent();
-			
+			//var binding = new Binding(nameof(regexInputSourceTop.Regex));
+			//binding.Source = regexInputSourceTop;
+			//binding.Mode = BindingMode.TwoWay;
+			//regexInputSourceBottom.SetBinding(RegexInputWidgetHorizontal.RegexProperty, binding);
 		}
 
 		private void expander_Expanded(object sender, RoutedEventArgs e)
@@ -43,7 +47,14 @@ namespace TestApp
 
 		private void validGreen_Click(object sender, RoutedEventArgs e)
 		{
-			colorBindingRealTimeTest.ValidTextColor = Colors.Green;
+			//colorBindingRealTimeTest.ValidTextColor = Colors.Green;
+		}
+
+		private void submitButton_basicBindingTests_Click(object sender, RoutedEventArgs e)
+		{
+			var temp = regexInput_basicBindingTest;
+			//regexInput_basicBindingTest.Regex = new Regex(
+			//	$@"gr(a|e)yb[a4A]ck", RegexOptions.Multiline | RegexOptions.ExplicitCapture);
 		}
 	}
 }

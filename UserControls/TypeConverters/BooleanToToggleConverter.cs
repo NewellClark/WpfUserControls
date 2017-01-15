@@ -10,7 +10,8 @@ using System.Windows.Media;
 namespace NewellClark.Wpf.UserControls.TypeConverters
 {
 	/// <summary>
-	/// Converts a boolean to one of two specified values.
+	/// Converts a boolean to a pair of specified values (for example, red/green, or 
+	/// Visible/Hidden). 
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	public class BooleanToToggleConverter<T> : IValueConverter
