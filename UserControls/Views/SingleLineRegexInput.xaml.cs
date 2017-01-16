@@ -24,9 +24,9 @@ namespace NewellClark.Wpf.UserControls.Views
 	/// It fits on a single line.
 	/// Provides visual feedback when the user enters an invalid regular expression.
 	/// </summary>
-	public partial class SingleLineRegexInputWidget : UserControl
+	public partial class SingleLineRegexInput : UserControl
 	{
-		public SingleLineRegexInputWidget()
+		public SingleLineRegexInput()
 		{
 			_textBrushConverter = new BooleanToToggleConverter<Brush>(
 				new SolidColorBrush(Colors.Black),
@@ -49,11 +49,11 @@ namespace NewellClark.Wpf.UserControls.Views
 			set { SetValue(RegexProperty, value); }
 		}
 		public static readonly DependencyProperty RegexProperty = DependencyProperty.Register(
-			nameof(Regex), typeof(Regex), typeof(SingleLineRegexInputWidget),
+			nameof(Regex), typeof(Regex), typeof(SingleLineRegexInput),
 			new PropertyMetadata(OnRegexPropertyChanged));
 		private static void OnRegexPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			((SingleLineRegexInputWidget)sender)._viewModel.Value = (Regex)e.NewValue;
+			((SingleLineRegexInput)sender)._viewModel.Regex = (Regex)e.NewValue;
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
@@ -62,7 +62,7 @@ namespace NewellClark.Wpf.UserControls.Views
 			get { return (bool)GetValue(_isValidPropertyKey.DependencyProperty); }
 		}
 		private static readonly DependencyPropertyKey _isValidPropertyKey = DependencyProperty.RegisterReadOnly(
-			nameof(IsValid), typeof(bool), typeof(SingleLineRegexInputWidget), new PropertyMetadata(false));
+			nameof(IsValid), typeof(bool), typeof(SingleLineRegexInput), new PropertyMetadata(false));
 
 		public Brush ValidTextBrush
 		{
@@ -107,9 +107,9 @@ namespace NewellClark.Wpf.UserControls.Views
 			};
 			_viewModel.PropertyChanged += (o, e) =>
 			{
-				if (e.PropertyName == nameof(_viewModel.Value))
+				if (e.PropertyName == nameof(_viewModel.Regex))
 				{
-					Regex = _viewModel.Value;
+					Regex = _viewModel.Regex;
 				}
 			};
 		}

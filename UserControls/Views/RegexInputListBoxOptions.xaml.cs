@@ -23,9 +23,9 @@ namespace NewellClark.Wpf.UserControls.Views
 	/// A UI widget that allows users to enter a .NET-flavored Regular Expression.
 	/// Text changes color to indicate when the pattern entered by the user is invalid. 
 	/// </summary>
-	public partial class RegexInputWidgetHorizontal : UserControl
+	public partial class RegexInputListBoxOptions : UserControl
 	{
-		public RegexInputWidgetHorizontal()
+		public RegexInputListBoxOptions()
 		{
 			_textBrushConverter = new BooleanToToggleConverter<Brush>(
 				new SolidColorBrush(Colors.Black),
@@ -50,7 +50,7 @@ namespace NewellClark.Wpf.UserControls.Views
 			private set { SetValue(_isValidPropertyKey, value); }
 		}
 		private static DependencyPropertyKey _isValidPropertyKey = DependencyProperty.RegisterReadOnly(
-			nameof(IsValid), typeof(bool), typeof(RegexInputWidgetHorizontal), new PropertyMetadata(false));
+			nameof(IsValid), typeof(bool), typeof(RegexInputListBoxOptions), new PropertyMetadata(false));
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public Regex Regex
@@ -59,12 +59,12 @@ namespace NewellClark.Wpf.UserControls.Views
 			set { SetValue(RegexProperty, value); }
 		}
 		public static readonly DependencyProperty RegexProperty = DependencyProperty.Register(
-			nameof(Regex), typeof(Regex), typeof(RegexInputWidgetHorizontal),
+			nameof(Regex), typeof(Regex), typeof(RegexInputListBoxOptions),
 			new PropertyMetadata(OnRegexPropertyChanged));
 		private static void OnRegexPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			var target = (RegexInputWidgetHorizontal)sender;
-			target._viewModel.Value = (Regex)e.NewValue;
+			var target = (RegexInputListBoxOptions)sender;
+			target._viewModel.Regex = (Regex)e.NewValue;
 		}
 
 		public Brush ValidTextBrush
@@ -105,9 +105,9 @@ namespace NewellClark.Wpf.UserControls.Views
 			};
 			_viewModel.PropertyChanged += (o, e) =>
 			{
-				if (e.PropertyName == nameof(_viewModel.Value))
+				if (e.PropertyName == nameof(_viewModel.Regex))
 				{
-					Regex = _viewModel.Value;
+					Regex = _viewModel.Regex;
 				}
 			};
 		}

@@ -112,18 +112,17 @@
     <Compile Include="TypeConverters\BooleanToToggleConverter.cs" />
     <Compile Include="TypeConverters\DebugConverter.cs" />
     <Compile Include="ViewModels\RegexViewModel.cs" />
-    <Compile Include="Views\RegexInputWidgetHorizontal.xaml.cs">
-      <DependentUpon>RegexInputWidgetHorizontal.xaml</DependentUpon>
+    <Compile Include="Views\RegexInputListBoxOptions.xaml.cs">
+      <DependentUpon>RegexInputListBoxOptions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SingleLineRegexInputWidget.xaml.cs">
-      <DependentUpon>SingleLineRegexInputWidget.xaml</DependentUpon>
+    <Compile Include="Views\SingleLineRegexInput.xaml.cs">
+      <DependentUpon>SingleLineRegexInput.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,11 +132,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Views\RegexInputWidgetHorizontal.xaml">
+    <Page Include="Views\RegexInputListBoxOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SingleLineRegexInputWidget.xaml">
+    <Page Include="Views\SingleLineRegexInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

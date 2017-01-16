@@ -9,9 +9,9 @@
 		Title="TestWindow" Height="298.121" Width="479.123">
 	<Grid>
 
-		<Views:SingleLineRegexInputWidget Name="topRegexInput"
-			HorizontalAlignment="Left" Margin="32,29,0,0" VerticalAlignment="Top"/>
-		<Views:SingleLineRegexInputWidget Name="bottomRegexInput"
+		<Views:SingleLineRegexInput Name="topRegexInput"
+			HorizontalAlignment="Left" Margin="32,29,0,0" VerticalAlignment="Top" Background="#FFDCFF00"/>
+		<Views:SingleLineRegexInput Name="bottomRegexInput"
 			Regex="{Binding ElementName=topRegexInput, Path=Regex,
 			Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
 			HorizontalAlignment="Left" Margin="32,57,0,0" VerticalAlignment="Top" Width="400"/>
