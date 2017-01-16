@@ -112,6 +112,9 @@
     <Compile Include="TypeConverters\BooleanToToggleConverter.cs" />
     <Compile Include="TypeConverters\DebugConverter.cs" />
     <Compile Include="ViewModels\RegexViewModel.cs" />
+    <Compile Include="Views\Components\RegexOptionsComboBox.xaml.cs">
+      <DependentUpon>RegexOptionsComboBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegexInputListBoxOptions.xaml.cs">
       <DependentUpon>RegexInputListBoxOptions.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Views\Components\RegexOptionsComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RegexInputListBoxOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
