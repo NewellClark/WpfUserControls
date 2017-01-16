@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TestApp
 {
 	/// <summary>
-	/// Interaction logic for WriteableRegexBindingTest.xaml
+	/// Interaction logic for ManualTestsContainer.xaml
 	/// </summary>
-	public partial class WriteableRegexBindingTest : Window
+	public partial class ManualTestsContainer : Window
 	{
-		public WriteableRegexBindingTest()
+		public ManualTestsContainer()
 		{
 			InitializeComponent();
 		}

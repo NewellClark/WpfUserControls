@@ -68,34 +68,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SingleLineInputWidgetTests.xaml.cs">
-      <DependentUpon>SingleLineInputWidgetTests.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WriteableRegexBindingTest.xaml.cs">
-      <DependentUpon>WriteableRegexBindingTest.xaml</DependentUpon>
-    </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="SingleLineInputWidgetTests.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WriteableRegexBindingTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HorizontalRegexWidgetTestsContainer.xaml.cs">
+      <DependentUpon>HorizontalRegexWidgetTestsContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManualTestWidgets\IsValidPropertyBindingTest.xaml.cs">
+      <DependentUpon>IsValidPropertyBindingTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManualTestWidgets\RegexPropertyBindingTest.xaml.cs">
+      <DependentUpon>RegexPropertyBindingTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -128,6 +115,21 @@
       <Name>UserControls</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="HorizontalRegexWidgetTestsContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManualTestWidgets\IsValidPropertyBindingTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManualTestWidgets\RegexPropertyBindingTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
