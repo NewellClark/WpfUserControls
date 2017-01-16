@@ -22,7 +22,7 @@ namespace NewellClark.Wpf.UserControls.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace NewellClark.Wpf.UserControls.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NewellClark.Wpf.UserControls.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,102 @@ namespace NewellClark.Wpf.UserControls.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regex Options.
+        /// </summary>
+        public static string regexOptions {
+            get {
+                return ResourceManager.GetString("regexOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compiled.
+        /// </summary>
+        public static string regexOptions_compiled {
+            get {
+                return ResourceManager.GetString("regexOptions_compiled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Culture invariant.
+        /// </summary>
+        public static string regexOptions_cultureInvariant {
+            get {
+                return ResourceManager.GetString("regexOptions_cultureInvariant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ECMA Script.
+        /// </summary>
+        public static string regexOptions_ecmaScript {
+            get {
+                return ResourceManager.GetString("regexOptions_ecmaScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Explicit capture.
+        /// </summary>
+        public static string regexOptions_explicitCapture {
+            get {
+                return ResourceManager.GetString("regexOptions_explicitCapture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore case.
+        /// </summary>
+        public static string regexOptions_ignoreCase {
+            get {
+                return ResourceManager.GetString("regexOptions_ignoreCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore pattern whitespace.
+        /// </summary>
+        public static string regexOptions_ignorePatternWhitespace {
+            get {
+                return ResourceManager.GetString("regexOptions_ignorePatternWhitespace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiline.
+        /// </summary>
+        public static string regexOptions_multiline {
+            get {
+                return ResourceManager.GetString("regexOptions_multiline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right-to-left.
+        /// </summary>
+        public static string regexOptions_rightToLeft {
+            get {
+                return ResourceManager.GetString("regexOptions_rightToLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Singleline.
+        /// </summary>
+        public static string regexOptions_singleline {
+            get {
+                return ResourceManager.GetString("regexOptions_singleline", resourceCulture);
             }
         }
     }

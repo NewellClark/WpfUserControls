@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NewellClark.Wpf.UserControls.ViewModels
 {
-	public sealed class RegexViewModel : INotifyPropertyChanged
+	internal sealed class RegexViewModel : INotifyPropertyChanged
 	{
 		public RegexViewModel()
 		{
@@ -27,12 +27,12 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			_cultureInvariant = CreateFlag(RegexOptions.CultureInvariant);
 		}
 
-		public Regex Value
+		public Regex Regex
 		{
-			get { return _value; }
-			set { UpdateValue(value); }
+			get { return _regex; }
+			set { UpdateRegex(value); }
 		}
-		private Regex _value;
+		private Regex _regex;
 
 		public string Pattern
 		{
@@ -136,27 +136,28 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		{
 			_isUpdating = true;
 
-			SetValueSwallowExceptions(_pattern, _options);
-			IsValid = Value != null;
+			SetRegexValueSwallowExceptions(_pattern, _options);
+			IsValid = Regex != null;
 			RaiseEventsOnDirtyProperties();
 
 			_isUpdating = false;
 		}
 
-		private void UpdateValue(Regex value)
+		private void UpdateRegex(Regex regex)
 		{
 			_isUpdating = true;
 
-			if (!SetField(ref _value, value, nameof(Value)))
+			if (!SetField(ref _regex, regex, nameof(Regex)))
 			{
 				_isUpdating = true;
 				return;
 			}
 
-			if (_value != null)
+			if (_regex != null)
 			{
-				Options = _value.Options;
-				Pattern = _value.ToString();
+				Options = _regex.Options;
+				Pattern = _regex.ToString();
+				IsValid = _regex != null;
 			}
 
 			RaiseEventsOnDirtyProperties();
@@ -189,7 +190,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			_dirtyProperties.Clear();
 		}
 
-		private void SetValueSwallowExceptions(string pattern, RegexOptions options)
+		private void SetRegexValueSwallowExceptions(string pattern, RegexOptions options)
 		{
 			Regex result;
 			try
@@ -204,7 +205,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			{
 				result = null;
 			}
-			Value = result;
+			Regex = result;
 		}
 
 		private FlagBool CreateFlag(RegexOptions valueWhenEnabled)

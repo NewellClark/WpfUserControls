@@ -77,7 +77,7 @@ namespace UserControlsTests
 
 			vm.Pattern = pattern;
 
-			Assert.That(vm.Value.ToString() == pattern);
+			Assert.That(vm.Regex.ToString() == pattern);
 		}
 
 		[Test]
@@ -86,7 +86,7 @@ namespace UserControlsTests
 			string pattern = "<[a-z0-9]>";
 			var vm = new RegexViewModel();
 
-			vm.Value = new Regex(pattern);
+			vm.Regex = new Regex(pattern);
 
 			Assert.AreEqual(pattern, vm.Pattern);
 		}
@@ -98,7 +98,7 @@ namespace UserControlsTests
 			Regex regex = new Regex("gr[ae]y", options);
 			var vm = new RegexViewModel();
 
-			vm.Value = regex;
+			vm.Regex = regex;
 
 			Assert.AreEqual(options, vm.Options);
 		}
@@ -111,7 +111,7 @@ namespace UserControlsTests
 
 			vm.Pattern = pattern;
 
-			Assert.AreEqual(vm.Value, null);
+			Assert.AreEqual(vm.Regex, null);
 		}
 
 
@@ -124,7 +124,7 @@ namespace UserControlsTests
 			AssertPropertyChangedEventFires(
 				vm,
 				x => x.Pattern = pattern,
-				nameof(vm.Pattern), nameof(vm.Value), nameof(vm.IsValid));
+				nameof(vm.Pattern), nameof(vm.Regex), nameof(vm.IsValid));
 		}
 
 		[Test]
@@ -140,7 +140,7 @@ namespace UserControlsTests
 			vm.Pattern = "hello world [0-9]+";
 			var changingProperties = new string[]
 			{
-				nameof(vm.Value),
+				nameof(vm.Regex),
 				nameof(vm.Options),
 				nameof(vm.Multiline),
 				nameof(vm.IgnoreCase),
@@ -180,7 +180,7 @@ namespace UserControlsTests
 		public void Value_FiresAllEvents_WhenSetToNonNullFromNonNull()
 		{
 			var vm = new RegexViewModel();
-			vm.Value = new Regex($"[a4A][lIi]", RegexOptions.Multiline);
+			vm.Regex = new Regex($"[a4A][lIi]", RegexOptions.Multiline);
 			string pattern = "(h.+)*[aeiou]";
 			RegexOptions options =
 				RegexOptions.RightToLeft |
@@ -189,7 +189,7 @@ namespace UserControlsTests
 
 			string[] changingProperties = new string[]
 			{
-				nameof(vm.Value),
+				nameof(vm.Regex),
 				nameof(vm.Pattern),
 				nameof(vm.Options),
 
@@ -201,7 +201,7 @@ namespace UserControlsTests
 			};
 
 			AssertPropertyChangedEventFires(
-				vm, x => x.Value = new Regex(pattern, options), 
+				vm, x => x.Regex = new Regex(pattern, options), 
 				changingProperties);
 		}
 
@@ -214,16 +214,17 @@ namespace UserControlsTests
 				IgnoreCase | IgnorePatternWhitespace | Multiline);
 			var changingProperties = new string[]
 			{
-				nameof(vm.Value),
+				nameof(vm.Regex),
 				nameof(vm.Pattern),
 				nameof(vm.Options),
 				nameof(vm.IgnoreCase),
 				nameof(vm.IgnorePatternWhitespace),
-				nameof(vm.Multiline)
+				nameof(vm.Multiline),
+				nameof(vm.IsValid)
 			};
 
 			AssertPropertyChangedEventFires(
-				vm, x => x.Value = regex, true, changingProperties);
+				vm, x => x.Regex = regex, true, changingProperties);
 		}
 
 		[Test]
@@ -233,12 +234,12 @@ namespace UserControlsTests
 			RegexOptions options = RegexOptions.IgnoreCase | RegexOptions.RightToLeft;
 
 			var vm = new RegexViewModel();
-			vm.Value = new Regex(pattern, options);
+			vm.Regex = new Regex(pattern, options);
 
 			AssertPropertyChangedEventFires(
-				vm, x => x.Value = null, true, nameof(vm.Value));
+				vm, x => x.Regex = null, true, nameof(vm.Regex));
 			Assert.That(vm.Options == options, $"Must remember {nameof(vm.Options)} when " +
-				$"{nameof(vm.Value)} set to null");
+				$"{nameof(vm.Regex)} set to null");
 		}
 
 		[Test]
@@ -246,12 +247,12 @@ namespace UserControlsTests
 		{
 			string pattern = @"[0-9]{5}";
 			var vm = new RegexViewModel();
-			vm.Value = new Regex(pattern);
+			vm.Regex = new Regex(pattern);
 
 			AssertPropertyChangedEventFires(
-				vm, x => x.Value = null, true, nameof(vm.Value));
+				vm, x => x.Regex = null, true, nameof(vm.Regex));
 			Assert.That(vm.Pattern == pattern,
-				$"Did not remember {nameof(vm.Pattern)} when {nameof(vm.Value)} was set to null.");
+				$"Did not remember {nameof(vm.Pattern)} when {nameof(vm.Regex)} was set to null.");
 		}
 
 
