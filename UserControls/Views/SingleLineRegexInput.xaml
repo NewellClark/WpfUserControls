@@ -6,9 +6,8 @@
 			 xmlns:local="clr-namespace:NewellClark.Wpf.UserControls.Views"
 			 xmlns:vms="clr-namespace:NewellClark.Wpf.UserControls.ViewModels"
 			 xmlns:resx="clr-namespace:NewellClark.Wpf.UserControls.Properties"
-			 mc:Ignorable="d" 
-			 d:DesignHeight="25" d:DesignWidth="400"
-			 Width="400" Height="23">
+			 mc:Ignorable="d" d:DesignWidth="300">
+	
 	<UserControl.DataContext>
 		<vms:RegexViewModel/>
 	</UserControl.DataContext>
@@ -17,22 +16,15 @@
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="Auto"/>
 		</Grid.ColumnDefinitions>
-		<TextBox Name="pattern" BorderBrush="#FFABADB3"
-				 Text="{Binding Path=Pattern, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-			<TextBox.Background>
-				<SolidColorBrush Color="White" Opacity="0"/>
-			</TextBox.Background>
-		</TextBox>
+
+		<TextBox Name="pattern" BorderBrush="#FFABADB3" Margin="0,0,1,0" MinWidth="50"
+				 Text="{Binding Path=Pattern, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
 		<Grid Grid.Column="1">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition Height="1*"/>
-			</Grid.RowDefinitions>
 
-			<ComboBox Name="optionsSelector" Grid.Row="0" 
+			<ComboBox Name="optionsSelector" Grid.Row="0"
 				  SelectedIndex="0" IsReadOnly="True"
-				  SelectionChanged="optionsSelector_SelectionChanged" Grid.RowSpan="2">
+				  SelectionChanged="optionsSelector_SelectionChanged">
 				<ComboBoxItem Content="{x:Static resx:Resources.regexOptions}"/>
 				<CheckBox Name="ignoreCase"
 						  IsChecked="{Binding IgnoreCase, Mode=TwoWay}"

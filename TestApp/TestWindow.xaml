@@ -4,17 +4,16 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:TestApp"
-		xmlns:Views="clr-namespace:NewellClark.Wpf.UserControls.Views;assembly=WpfCustomUserControls" x:Class="TestApp.TestWindow"
+		xmlns:Views="clr-namespace:NewellClark.Wpf.UserControls.Views;assembly=WpfCustomUserControls" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="mainWindow" x:Class="TestApp.TestWindow"
 		mc:Ignorable="d"
-		Title="TestWindow" Height="298.121" Width="479.123">
-	<Grid>
+		Title="TestWindow" Height="408.121" Width="750.123">
+	<StackPanel>
+		<xctk:IntegerUpDown x:Name="fontSizeSelector" 
+			Value="{Binding ElementName=mainWindow, Path=FontSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+			HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+		<Views:SingleLineRegexInput VerticalAlignment="Top"/>
+		<Views:SingleLineRegexInput VerticalAlignment="Top"/>
+		<Views:SingleLineRegexInput VerticalAlignment="Top"/>
 
-		<Views:SingleLineRegexInput Name="topRegexInput"
-			HorizontalAlignment="Left" Margin="32,29,0,0" VerticalAlignment="Top" Background="#FFDCFF00"/>
-		<Views:SingleLineRegexInput Name="bottomRegexInput"
-			Regex="{Binding ElementName=topRegexInput, Path=Regex,
-			Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-			HorizontalAlignment="Left" Margin="32,57,0,0" VerticalAlignment="Top" Width="400"/>
-
-	</Grid>
+	</StackPanel>
 </Window>
