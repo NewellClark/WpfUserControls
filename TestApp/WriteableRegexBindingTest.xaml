@@ -1,0 +1,19 @@
+﻿<Window
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:TestApp"
+		xmlns:Views="clr-namespace:NewellClark.Wpf.UserControls.Views;assembly=WpfCustomUserControls" x:Class="TestApp.WriteableRegexBindingTest"
+		mc:Ignorable="d"
+		Title="WriteableRegexBindingTest" Height="376.384" Width="719.497">
+	<Grid>
+
+		<Views:RegexInputWidgetHorizontal 
+			Regex="{Binding ElementName=bottomRegexInput, Path=Regex, Mode=TwoWay}"
+			x:Name="topRegexInput" Margin="10,25,10,0" VerticalAlignment="Top" Width="Auto"/>
+		<Views:RegexInputWidgetHorizontal 
+			x:Name="bottomRegexInput" Margin="10,130,10,0" VerticalAlignment="Top" Width="Auto"/>
+
+	</Grid>
+</Window>

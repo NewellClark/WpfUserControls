@@ -219,7 +219,8 @@ namespace UserControlsTests
 				nameof(vm.Options),
 				nameof(vm.IgnoreCase),
 				nameof(vm.IgnorePatternWhitespace),
-				nameof(vm.Multiline)
+				nameof(vm.Multiline),
+				nameof(vm.IsValid)
 			};
 
 			AssertPropertyChangedEventFires(

@@ -71,6 +71,9 @@
     <Compile Include="SingleLineInputWidgetTests.xaml.cs">
       <DependentUpon>SingleLineInputWidgetTests.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WriteableRegexBindingTest.xaml.cs">
+      <DependentUpon>WriteableRegexBindingTest.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +87,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SingleLineInputWidgetTests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WriteableRegexBindingTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
