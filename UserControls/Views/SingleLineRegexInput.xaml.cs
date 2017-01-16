@@ -31,14 +31,14 @@ namespace NewellClark.Wpf.UserControls.Views
 			_textBrushConverter = new BooleanToToggleConverter<Brush>(
 				new SolidColorBrush(Colors.Black),
 				new SolidColorBrush(Colors.Red));
-			InitializeComponent();
+
 			_viewModel = new RegexViewModel();
 			DataContext = _viewModel;
 
+			InitializeComponent();
+
 			InitializeDesignerOnlyProperties();
-
 			InitializeEventHandlers();
-
 			InitializeTextBoxForegroundBrushBinding();
 		}
 
@@ -77,15 +77,6 @@ namespace NewellClark.Wpf.UserControls.Views
 			set { _invalidTextBrush.Set(value); }
 		}
 		private DesignerOnlyProperty<Brush> _invalidTextBrush;
-
-		private void optionsSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			if (optionsSelector.Items.Count != 0)
-			{
-				optionsSelector.SelectedIndex = 0;
-				e.Handled = true;
-			}
-		}
 
 		private void InitializeTextBoxForegroundBrushBinding()
 		{
