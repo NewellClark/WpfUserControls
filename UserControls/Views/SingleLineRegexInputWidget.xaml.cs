@@ -45,10 +45,16 @@ namespace NewellClark.Wpf.UserControls.Views
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public Regex Regex
 		{
-			get { return (Regex)GetValue(_regexPropertyKey.DependencyProperty); }
+			get { return (Regex)GetValue(RegexProperty); }
+			set { SetValue(RegexProperty, value); }
 		}
-		private static readonly DependencyPropertyKey _regexPropertyKey = DependencyProperty.RegisterReadOnly(
-			nameof(Regex), typeof(Regex), typeof(SingleLineRegexInputWidget), new PropertyMetadata(null));
+		public static readonly DependencyProperty RegexProperty = DependencyProperty.Register(
+			nameof(Regex), typeof(Regex), typeof(SingleLineRegexInputWidget),
+			new PropertyMetadata(OnRegexPropertyChanged));
+		private static void OnRegexPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			((SingleLineRegexInputWidget)sender)._viewModel.Value = (Regex)e.NewValue;
+		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public bool IsValid
@@ -103,7 +109,7 @@ namespace NewellClark.Wpf.UserControls.Views
 			{
 				if (e.PropertyName == nameof(_viewModel.Value))
 				{
-					SetValue(_regexPropertyKey, _viewModel.Value);
+					Regex = _viewModel.Value;
 				}
 			};
 		}

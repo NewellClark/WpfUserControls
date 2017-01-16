@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TestApp
 {
 	/// <summary>
-	/// Interaction logic for SingleLineInputWidgetTests.xaml
+	/// Interaction logic for TestWindow.xaml
 	/// </summary>
-	public partial class SingleLineInputWidgetTests : Window
+	public partial class TestWindow : Window
 	{
-		public SingleLineInputWidgetTests()
+		public TestWindow()
 		{
 			InitializeComponent();
 		}

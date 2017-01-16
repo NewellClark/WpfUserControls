@@ -40,17 +40,14 @@ namespace NewellClark.Wpf.UserControls.Views
 
 			InitializeEventHandlers();
 
-			var binding = new Binding(nameof(_viewModel.IsValid));
-			binding.Mode = BindingMode.OneWay;
-			binding.Converter = _textBrushConverter;
-			binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-			pattern.SetBinding(TextBox.ForegroundProperty, binding);
+			InitializeIsValidBinding();
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public bool IsValid
 		{
 			get { return (bool)GetValue(_isValidPropertyKey.DependencyProperty); }
+			private set { SetValue(_isValidPropertyKey, value); }
 		}
 		private static DependencyPropertyKey _isValidPropertyKey = DependencyProperty.RegisterReadOnly(
 			nameof(IsValid), typeof(bool), typeof(RegexInputWidgetHorizontal), new PropertyMetadata(false));
@@ -58,10 +55,17 @@ namespace NewellClark.Wpf.UserControls.Views
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public Regex Regex
 		{
-			get { return (Regex)GetValue(_regexPropertyKey.DependencyProperty); }
+			get { return (Regex)GetValue(RegexProperty); }
+			set { SetValue(RegexProperty, value); }
 		}
-		private static DependencyPropertyKey _regexPropertyKey = DependencyProperty.RegisterReadOnly(
-			nameof(Regex), typeof(Regex), typeof(RegexInputWidgetHorizontal), new PropertyMetadata(null));
+		public static readonly DependencyProperty RegexProperty = DependencyProperty.Register(
+			nameof(Regex), typeof(Regex), typeof(RegexInputWidgetHorizontal),
+			new PropertyMetadata(OnRegexPropertyChanged));
+		private static void OnRegexPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			var target = (RegexInputWidgetHorizontal)sender;
+			target._viewModel.Value = (Regex)e.NewValue;
+		}
 
 		public Brush ValidTextBrush
 		{
@@ -77,8 +81,18 @@ namespace NewellClark.Wpf.UserControls.Views
 		}
 		private DesignerOnlyProperty<Brush> _invalidTextBrush;
 
+
 		private BooleanToToggleConverter<Brush> _textBrushConverter;
 		private RegexViewModel _viewModel;
+
+		private void InitializeIsValidBinding()
+		{
+			var binding = new Binding(nameof(_viewModel.IsValid));
+			binding.Mode = BindingMode.OneWay;
+			binding.Converter = _textBrushConverter;
+			binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+			pattern.SetBinding(TextBox.ForegroundProperty, binding);
+		}
 
 		private void InitializeEventHandlers()
 		{
@@ -93,7 +107,7 @@ namespace NewellClark.Wpf.UserControls.Views
 			{
 				if (e.PropertyName == nameof(_viewModel.Value))
 				{
-					SetValue(_regexPropertyKey, _viewModel.Value);
+					Regex = _viewModel.Value;
 				}
 			};
 		}

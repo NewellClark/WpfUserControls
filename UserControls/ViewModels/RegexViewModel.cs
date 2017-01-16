@@ -157,6 +157,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			{
 				Options = _value.Options;
 				Pattern = _value.ToString();
+				IsValid = _value != null;
 			}
 
 			RaiseEventsOnDirtyProperties();
