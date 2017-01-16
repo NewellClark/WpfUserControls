@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TestApp
 {
 	/// <summary>
-	/// Interaction logic for ManualTestsContainer.xaml
+	/// Interaction logic for TestWindow.xaml
 	/// </summary>
-	public partial class ManualTestsContainer : Window
+	public partial class TestWindow : Window
 	{
-		public ManualTestsContainer()
+		public TestWindow()
 		{
 			InitializeComponent();
 		}

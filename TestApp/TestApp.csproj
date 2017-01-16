@@ -72,17 +72,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HorizontalRegexWidgetTestsContainer.xaml.cs">
-      <DependentUpon>HorizontalRegexWidgetTestsContainer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ManualTestWidgets\IsValidPropertyBindingTest.xaml.cs">
-      <DependentUpon>IsValidPropertyBindingTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ManualTestWidgets\RegexPropertyBindingTest.xaml.cs">
-      <DependentUpon>RegexPropertyBindingTest.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -116,20 +110,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="HorizontalRegexWidgetTestsContainer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManualTestWidgets\IsValidPropertyBindingTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ManualTestWidgets\RegexPropertyBindingTest.xaml">
+    <Page Include="TestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
