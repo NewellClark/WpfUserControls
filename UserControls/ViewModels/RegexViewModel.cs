@@ -48,6 +48,13 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		}
 		private bool _isValid;
 
+		public RegexError Error
+		{
+			get { return _error; }
+			set { SetField(ref _error, value); }
+		}
+		private RegexError _error;
+
 		public RegexOptions Options
 		{
 			get { return _options; }
@@ -193,6 +200,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		private void SetRegexValueSwallowExceptions(string pattern, RegexOptions options)
 		{
 			Regex result;
+			RegexError error = RegexError.None;
 			try
 			{
 				result = new Regex(pattern, options);
@@ -200,11 +208,19 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			catch (ArgumentNullException)
 			{
 				result = null;
+				error = RegexError.NullPattern;
+			}
+			catch (ArgumentOutOfRangeException)
+			{
+				result = null;
+				error = RegexError.InvalidOptions;
 			}
 			catch (ArgumentException)
 			{
 				result = null;
+				error = RegexError.InvalidPattern;
 			}
+			Error = error;
 			Regex = result;
 		}
 
@@ -257,5 +273,13 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		private List<FlagBool> _flagBools;
 		private HashSet<string> _dirtyProperties;
 		private bool _isUpdating = false;
+	}
+
+	internal enum RegexError
+	{
+		None = 0,
+		NullPattern = 1,
+		InvalidPattern = 2,
+		InvalidOptions = 3
 	}
 }
