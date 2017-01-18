@@ -1,5 +1,5 @@
 ﻿using NewellClark.Wpf.UserControls.TypeConverters;
-using NewellClark.Wpf.UserControls.ViewModels;
+using NewellClark.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

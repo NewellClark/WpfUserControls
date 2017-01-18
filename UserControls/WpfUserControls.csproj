@@ -111,7 +111,6 @@
     <Compile Include="TypeConverters\BooleanToBrushConverter.cs" />
     <Compile Include="TypeConverters\BooleanToToggleConverter.cs" />
     <Compile Include="TypeConverters\DebugConverter.cs" />
-    <Compile Include="ViewModels\RegexViewModel.cs" />
     <Compile Include="Views\Components\RegexOptionsComboBox.xaml.cs">
       <DependentUpon>RegexOptionsComboBox.xaml</DependentUpon>
     </Compile>
@@ -133,7 +132,12 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ViewModels\ViewModels.csproj">
+      <Project>{7fde84e1-6965-46cf-a1f2-ec3c7a847d3c}</Project>
+      <Name>ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Components\RegexOptionsComboBox.xaml">
       <SubType>Designer</SubType>
@@ -148,6 +152,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

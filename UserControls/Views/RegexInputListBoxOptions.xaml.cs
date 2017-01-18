@@ -1,5 +1,5 @@
 ﻿using NewellClark.Wpf.UserControls.TypeConverters;
-using NewellClark.Wpf.UserControls.ViewModels;
+using NewellClark.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +22,7 @@ namespace NewellClark.Wpf.UserControls.Views
 	/// <summary>
 	/// A UI widget that allows users to enter a .NET-flavored Regular Expression.
 	/// Text changes color to indicate when the pattern entered by the user is invalid. 
+	/// Uses a list-box to display the RegexOptions.
 	/// </summary>
 	public partial class RegexInputListBoxOptions : UserControl
 	{

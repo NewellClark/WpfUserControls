@@ -104,9 +104,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserControls\UserControls.csproj">
+    <ProjectReference Include="..\UserControls\WpfUserControls.csproj">
       <Project>{2c5c0afc-78c6-4ddc-a05c-9a27e5bdc0fc}</Project>
-      <Name>UserControls</Name>
+      <Name>WpfUserControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

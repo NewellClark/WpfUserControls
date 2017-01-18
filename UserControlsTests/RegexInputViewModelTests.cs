@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using System.Text.RegularExpressions;
 using static System.Text.RegularExpressions.RegexOptions;
-using NewellClark.Wpf.UserControls.ViewModels;
+using NewellClark.ViewModels;
 using System.ComponentModel;
 using static UserControlsTests.Common;
 

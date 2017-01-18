@@ -1,4 +1,4 @@
-﻿using NewellClark.Wpf.UserControls.ViewModels;
+﻿using NewellClark.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

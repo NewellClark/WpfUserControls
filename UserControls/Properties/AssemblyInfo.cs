@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("WpfCustomUserControls")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hewlett-Packard")]
+[assembly: AssemblyCompany("Newell-Clark")]
 [assembly: AssemblyProduct("WpfCustomUserControls")]
-[assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2017")]
+[assembly: AssemblyCopyright("Copyright © Newell-Clark 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

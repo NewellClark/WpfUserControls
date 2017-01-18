@@ -7,9 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace NewellClark.Wpf.UserControls.ViewModels
+namespace NewellClark.ViewModels
 {
-	internal sealed class RegexViewModel : INotifyPropertyChanged
+	public sealed class RegexViewModel : INotifyPropertyChanged
 	{
 		public RegexViewModel()
 		{
