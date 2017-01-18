@@ -49,10 +49,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserControls\WpfUserControls.csproj">
-      <Project>{2c5c0afc-78c6-4ddc-a05c-9a27e5bdc0fc}</Project>
-      <Name>WpfUserControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{7fde84e1-6965-46cf-a1f2-ec3c7a847d3c}</Project>
       <Name>ViewModels</Name>
