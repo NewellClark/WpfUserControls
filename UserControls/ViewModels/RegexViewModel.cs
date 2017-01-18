@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace NewellClark.Wpf.UserControls.ViewModels
 {
@@ -127,7 +124,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			get { return _ecmaScript.Enabled; }
 			set { _ecmaScript.Enabled = value; }
 		}
-		private FlagBool _ecmaScript;
+		private FlagBool _ecmaScript; 
 
 		public bool CultureInvariant
 		{
@@ -137,7 +134,6 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		private FlagBool _cultureInvariant;
 
 		public event PropertyChangedEventHandler PropertyChanged;
-
 
 		private void UpdateProperties()
 		{
@@ -150,6 +146,10 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			_isUpdating = false;
 		}
 
+		/// <summary>
+		/// Same as <c>UpdateProperties</c>, but called when the <c>Regex</c> property was set.
+		/// </summary>
+		/// <param name="regex"></param>
 		private void UpdateRegex(Regex regex)
 		{
 			_isUpdating = true;
