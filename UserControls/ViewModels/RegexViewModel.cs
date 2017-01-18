@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace NewellClark.Wpf.UserControls.ViewModels
 {
@@ -47,6 +44,13 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			private set { SetField(ref _isValid, value); }
 		}
 		private bool _isValid;
+
+		public RegexError Error
+		{
+			get { return _error; }
+			set { SetField(ref _error, value); }
+		}
+		private RegexError _error;
 
 		public RegexOptions Options
 		{
@@ -120,7 +124,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			get { return _ecmaScript.Enabled; }
 			set { _ecmaScript.Enabled = value; }
 		}
-		private FlagBool _ecmaScript;
+		private FlagBool _ecmaScript; 
 
 		public bool CultureInvariant
 		{
@@ -130,7 +134,6 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		private FlagBool _cultureInvariant;
 
 		public event PropertyChangedEventHandler PropertyChanged;
-
 
 		private void UpdateProperties()
 		{
@@ -143,6 +146,10 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			_isUpdating = false;
 		}
 
+		/// <summary>
+		/// Same as <c>UpdateProperties</c>, but called when the <c>Regex</c> property was set.
+		/// </summary>
+		/// <param name="regex"></param>
 		private void UpdateRegex(Regex regex)
 		{
 			_isUpdating = true;
@@ -193,6 +200,7 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		private void SetRegexValueSwallowExceptions(string pattern, RegexOptions options)
 		{
 			Regex result;
+			RegexError error = RegexError.None;
 			try
 			{
 				result = new Regex(pattern, options);
@@ -200,11 +208,19 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 			catch (ArgumentNullException)
 			{
 				result = null;
+				error = RegexError.NullPattern;
+			}
+			catch (ArgumentOutOfRangeException)
+			{
+				result = null;
+				error = RegexError.InvalidOptions;
 			}
 			catch (ArgumentException)
 			{
 				result = null;
+				error = RegexError.InvalidPattern;
 			}
+			Error = error;
 			Regex = result;
 		}
 
@@ -257,5 +273,13 @@ namespace NewellClark.Wpf.UserControls.ViewModels
 		private List<FlagBool> _flagBools;
 		private HashSet<string> _dirtyProperties;
 		private bool _isUpdating = false;
+	}
+
+	internal enum RegexError
+	{
+		None = 0,
+		NullPattern = 1,
+		InvalidPattern = 2,
+		InvalidOptions = 3
 	}
 }

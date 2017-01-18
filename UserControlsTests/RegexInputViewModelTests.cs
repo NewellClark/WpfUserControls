@@ -156,20 +156,18 @@ namespace UserControlsTests
 		[Test]
 		public void Options_DoesNotFireValueChangedWhenValueWasNull()
 		{
-			RegexOptions options = 
+			RegexOptions options =
 				RegexOptions.Compiled |
-				RegexOptions.ECMAScript |
 				RegexOptions.Multiline |
 				RegexOptions.IgnorePatternWhitespace;
 			var vm = new RegexViewModel();
 			string[] dependantProperties = new string[]
 			{
 				nameof (vm.Compiled),
-				nameof(vm.ECMAScript),
 				nameof(vm.Multiline),
 				nameof(vm.IgnorePatternWhitespace),
-				nameof(vm.Options)//,
-				//nameof(vm.Value)
+				nameof(vm.Options),
+				nameof(vm.Error)
 			};
 
 			AssertPropertyChangedEventFires(
@@ -255,6 +253,54 @@ namespace UserControlsTests
 				$"Did not remember {nameof(vm.Pattern)} when {nameof(vm.Regex)} was set to null.");
 		}
 
+		[Test]
+		public void Error_NullPattern()
+		{
+			var vm = new RegexViewModel();
+			vm.Pattern = @"gr(a|e)y";
+			vm.Pattern = null;
+
+			Assume.That(vm.Regex == null);
+			
+			Assert.That(vm.Error == RegexError.NullPattern);
+		}
+
+		[Test]
+		public void Error_InvalidPattern()
+		{
+			var vm = new RegexViewModel();
+			vm.Pattern = @"valid";
+			vm.Pattern = @"gr[aey";
+
+			Assume.That(vm.Regex == null);
+
+			Assert.That(vm.Error == RegexError.InvalidPattern);
+		}
+
+		[Test]
+		public void Error_InvalidOptions()
+		{
+			var vm = new RegexViewModel();
+			vm.Pattern = @"ch(aeiou)";
+			vm.Options = ECMAScript | RightToLeft;
+
+			Assume.That(vm.Regex == null);
+
+			Assert.That(vm.Error == RegexError.InvalidOptions);
+		}
+
+		[Test]
+		public void Error_None()
+		{
+			var vm = new RegexViewModel();
+			vm.Pattern = @"col(o|ou}r";
+
+			Assume.That(vm.Regex == null);
+
+			vm.Pattern = @"col(o|ou)r";
+
+			Assert.That(vm.Error == RegexError.None);
+		}
 
 		private void AssertPropertyChangedEventWorks<T>(
 			T target,
@@ -270,7 +316,5 @@ namespace UserControlsTests
 			mutateProperty(target);
 			Assert.True(success);
 		}
-
-
 	}
 }
