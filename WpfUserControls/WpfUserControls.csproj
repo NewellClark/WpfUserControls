@@ -8,7 +8,7 @@
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NewellClark.Wpf.UserControls</RootNamespace>
-    <AssemblyName>WpfCustomUserControls</AssemblyName>
+    <AssemblyName>WpfUserControls</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -30,6 +30,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -111,9 +114,11 @@
     <Compile Include="TypeConverters\BooleanToBrushConverter.cs" />
     <Compile Include="TypeConverters\BooleanToToggleConverter.cs" />
     <Compile Include="TypeConverters\DebugConverter.cs" />
-    <Compile Include="ViewModels\RegexViewModel.cs" />
     <Compile Include="Views\Components\RegexOptionsComboBox.xaml.cs">
       <DependentUpon>RegexOptionsComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MultiLineRegexInput.xaml.cs">
+      <DependentUpon>MultiLineRegexInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegexInputListBoxOptions.xaml.cs">
       <DependentUpon>RegexInputListBoxOptions.xaml</DependentUpon>
@@ -133,9 +138,18 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ViewModels\ViewModels.csproj">
+      <Project>{7fde84e1-6965-46cf-a1f2-ec3c7a847d3c}</Project>
+      <Name>ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Components\RegexOptionsComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MultiLineRegexInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +162,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

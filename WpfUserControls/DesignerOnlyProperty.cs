@@ -36,7 +36,9 @@ namespace NewellClark.Wpf.UserControls
 		/// <c>InvalidOperationException</c>.
 		/// </summary>
 		/// <param name="value"></param>
-		/// <param name="callerMemberName"></param>
+		/// <param name="callerMemberName">Used in the exception message if called at run-time.</param>
+		/// <exception cref="InvalidOperationException">Thrown when the user attempts to set the value of the current
+		/// <c>DesignerOnlyProperty</c> at run-time more than once.</exception>
 		public void Set(T value, [CallerMemberName]string callerMemberName = "")
 		{
 			if (!DesignerProperties.GetIsInDesignMode(_owner))

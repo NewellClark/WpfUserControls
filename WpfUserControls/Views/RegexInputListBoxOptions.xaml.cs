@@ -1,5 +1,5 @@
 ﻿using NewellClark.Wpf.UserControls.TypeConverters;
-using NewellClark.Wpf.UserControls.ViewModels;
+using NewellClark.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,27 +20,38 @@ using System.Windows.Shapes;
 namespace NewellClark.Wpf.UserControls.Views
 {
 	/// <summary>
-	/// A UI component that allows the user to enter a regular expression and configure all possible regex options.
-	/// It fits on a single line.
-	/// Provides visual feedback when the user enters an invalid regular expression.
+	/// A UI widget that allows users to enter a .NET-flavored Regular Expression.
+	/// Text changes color to indicate when the pattern entered by the user is invalid. 
+	/// Uses a list-box to display the RegexOptions.
 	/// </summary>
-	public partial class SingleLineRegexInput : UserControl
+	public partial class RegexInputListBoxOptions : UserControl
 	{
-		public SingleLineRegexInput()
+		public RegexInputListBoxOptions()
 		{
 			_textBrushConverter = new BooleanToToggleConverter<Brush>(
 				new SolidColorBrush(Colors.Black),
 				new SolidColorBrush(Colors.Red));
 
+			InitializeComponent();
+
 			_viewModel = new RegexViewModel();
 			DataContext = _viewModel;
 
-			InitializeComponent();
-
 			InitializeDesignerOnlyProperties();
+
 			InitializeEventHandlers();
-			InitializeTextBoxForegroundBrushBinding();
+
+			InitializeIsValidBinding();
 		}
+
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public bool IsValid
+		{
+			get { return (bool)GetValue(_isValidPropertyKey.DependencyProperty); }
+			private set { SetValue(_isValidPropertyKey, value); }
+		}
+		private static DependencyPropertyKey _isValidPropertyKey = DependencyProperty.RegisterReadOnly(
+			nameof(IsValid), typeof(bool), typeof(RegexInputListBoxOptions), new PropertyMetadata(false));
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public Regex Regex
@@ -49,20 +60,13 @@ namespace NewellClark.Wpf.UserControls.Views
 			set { SetValue(RegexProperty, value); }
 		}
 		public static readonly DependencyProperty RegexProperty = DependencyProperty.Register(
-			nameof(Regex), typeof(Regex), typeof(SingleLineRegexInput),
+			nameof(Regex), typeof(Regex), typeof(RegexInputListBoxOptions),
 			new PropertyMetadata(OnRegexPropertyChanged));
 		private static void OnRegexPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			((SingleLineRegexInput)sender)._viewModel.Regex = (Regex)e.NewValue;
+			var target = (RegexInputListBoxOptions)sender;
+			target._viewModel.Regex = (Regex)e.NewValue;
 		}
-
-		[EditorBrowsable(EditorBrowsableState.Never)]
-		public bool IsValid
-		{
-			get { return (bool)GetValue(_isValidPropertyKey.DependencyProperty); }
-		}
-		private static readonly DependencyPropertyKey _isValidPropertyKey = DependencyProperty.RegisterReadOnly(
-			nameof(IsValid), typeof(bool), typeof(SingleLineRegexInput), new PropertyMetadata(false));
 
 		public Brush ValidTextBrush
 		{
@@ -78,7 +82,11 @@ namespace NewellClark.Wpf.UserControls.Views
 		}
 		private DesignerOnlyProperty<Brush> _invalidTextBrush;
 
-		private void InitializeTextBoxForegroundBrushBinding()
+
+		private BooleanToToggleConverter<Brush> _textBrushConverter;
+		private RegexViewModel _viewModel;
+
+		private void InitializeIsValidBinding()
 		{
 			var binding = new Binding(nameof(_viewModel.IsValid));
 			binding.Mode = BindingMode.OneWay;
@@ -116,8 +124,5 @@ namespace NewellClark.Wpf.UserControls.Views
 				() => _textBrushConverter.False,
 				x => _textBrushConverter.False = x);
 		}
-
-		private RegexViewModel _viewModel;
-		private BooleanToToggleConverter<Brush> _textBrushConverter;
 	}
 }

@@ -104,16 +104,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserControls\UserControls.csproj">
-      <Project>{2c5c0afc-78c6-4ddc-a05c-9a27e5bdc0fc}</Project>
-      <Name>UserControls</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Page Include="TestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfUserControls\WpfUserControls.csproj">
+      <Project>{2c5c0afc-78c6-4ddc-a05c-9a27e5bdc0fc}</Project>
+      <Name>WpfUserControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
