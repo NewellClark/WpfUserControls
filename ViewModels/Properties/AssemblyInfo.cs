@@ -18,6 +18,8 @@ using System.Runtime.InteropServices;
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
+[assembly: InternalsVisibleTo("WpfUserControls")]
+[assembly: InternalsVisibleTo("ViewModelsTests")]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("7fde84e1-6965-46cf-a1f2-ec3c7a847d3c")]
