@@ -32,10 +32,11 @@ namespace NewellClark.Wpf.UserControls.Views
 				new SolidColorBrush(Colors.Black),
 				new SolidColorBrush(Colors.Red));
 
-			_viewModel = new RegexViewModel();
-			DataContext = _viewModel;
-
 			InitializeComponent();
+
+			_viewModel = new RegexViewModel();
+			pattern.DataContext = _viewModel;
+			optionsSelector.DataContext = _viewModel;
 
 			InitializeDesignerOnlyProperties();
 			InitializeEventHandlers();
@@ -64,6 +65,11 @@ namespace NewellClark.Wpf.UserControls.Views
 		private static readonly DependencyPropertyKey _isValidPropertyKey = DependencyProperty.RegisterReadOnly(
 			nameof(IsValid), typeof(bool), typeof(SingleLineRegexInput), new PropertyMetadata(false));
 
+		/// <summary>
+		/// Gets or sets the brush that is used to paint the input text when the current regex is valid.
+		/// This property can only be set in the designer.
+		/// </summary>
+		/// <exception cref="InvalidOperationException">The property was set at run-time more than once.</exception>
 		public Brush ValidTextBrush
 		{
 			get { return _validTextBrush.Get(); }
@@ -71,6 +77,11 @@ namespace NewellClark.Wpf.UserControls.Views
 		}
 		private DesignerOnlyProperty<Brush> _validTextBrush;
 
+		/// <summary>
+		/// Gets or sets the brush that is used to paint the input text when the current regex is invalid.
+		/// This property can only be set in the designer.
+		/// </summary>
+		/// <exception cref="InvalidOperationException">The property was set at run-time more than once.</exception>
 		public Brush InvalidTextBrush
 		{
 			get { return _invalidTextBrush.Get(); }

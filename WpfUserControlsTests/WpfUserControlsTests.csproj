@@ -53,6 +53,10 @@
       <Project>{7fde84e1-6965-46cf-a1f2-ec3c7a847d3c}</Project>
       <Name>ViewModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WpfUserControls\WpfUserControls.csproj">
+      <Project>{2c5c0afc-78c6-4ddc-a05c-9a27e5bdc0fc}</Project>
+      <Name>WpfUserControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -22,6 +22,13 @@ namespace TestApp
 		public TestWindow()
 		{
 			InitializeComponent();
+
+			crashing.DataContext = this;
+		}
+
+		private void MultiLineRegexInput_Loaded(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }

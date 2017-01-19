@@ -114,6 +114,9 @@
     <Compile Include="Views\Components\RegexOptionsComboBox.xaml.cs">
       <DependentUpon>RegexOptionsComboBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MultiLineRegexInput.xaml.cs">
+      <DependentUpon>MultiLineRegexInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegexInputListBoxOptions.xaml.cs">
       <DependentUpon>RegexInputListBoxOptions.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Components\RegexOptionsComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MultiLineRegexInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

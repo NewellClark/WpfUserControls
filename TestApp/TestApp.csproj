@@ -109,6 +109,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfUserControls\WpfUserControls.csproj">
+      <Project>{2c5c0afc-78c6-4ddc-a05c-9a27e5bdc0fc}</Project>
+      <Name>WpfUserControls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
