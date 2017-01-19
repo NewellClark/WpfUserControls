@@ -21,7 +21,5 @@ namespace NewellClark.Wpf.UserControls
 			@this?.Invoke(@this.Target, new PropertyChangedEventArgs(name));
 			return true;
 		}
-
-		
 	}
 }
