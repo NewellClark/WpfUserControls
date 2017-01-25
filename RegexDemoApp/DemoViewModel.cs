@@ -72,8 +72,10 @@ namespace RegexDemoApp
 		}
 		private Task UpdateReplacedText()
 		{
-			//if (Regex == null || InputText == null || ReplacementPattern == null)
-			//	return Task.CompletedTask;
+			if (ReplacementPattern == null)
+				ReplacementPattern = string.Empty;
+			if (InputText == null)
+				InputText = string.Empty;
 
 			//	To avoid the warning about async methods returning immediately, we wrap our "await" code 
 			//		in here and return the task produced by it.
