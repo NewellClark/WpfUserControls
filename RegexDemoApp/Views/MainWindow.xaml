@@ -1,0 +1,57 @@
+﻿<Window
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:RegexDemoApp.Views"
+		xmlns:rootLocal="clr-namespace:RegexDemoApp"
+		xmlns:Views="clr-namespace:NewellClark.Wpf.UserControls.Views;assembly=WpfUserControls"
+		x:Class="RegexDemoApp.Views.MainWindow"
+		mc:Ignorable="d"
+		Title="MainWindow" Height="460" Width="727">
+	<!--<Window.Resources>
+		<rootLocal:DemoViewModel x:Key="viewModel" />
+	</Window.Resources>-->
+
+	<Window.DataContext>
+		<rootLocal:DemoViewModel/>
+	</Window.DataContext>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="10"/>
+			<RowDefinition Height="100"/>
+		</Grid.RowDefinitions>
+		
+		<!--Input text and replacement text-->
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="10"/>
+				<ColumnDefinition Width="1*"/>
+			</Grid.ColumnDefinitions>
+
+			<TextBox Name="inputText" Grid.Column="0" VerticalScrollBarVisibility="Visible" 
+					 Text="{Binding InputText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+			<TextBox Name="replacedText" Grid.Column="2" IsReadOnly="True" 
+					 VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" 
+					 AcceptsReturn="True" IsUndoEnabled="False" 
+					 Text="{Binding ReplacedText, Mode=OneWay}"/>
+		</Grid>
+
+		<!--Regex input and replacement-text input-->
+		<Grid Grid.Row="2">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*"/>
+				<RowDefinition Height="8"/>
+				<RowDefinition Height="1*"/>
+			</Grid.RowDefinitions>
+
+			<Views:SingleLineRegexInput Name="regex" Grid.Row="0"
+									   Regex="{Binding Path=Regex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+			<TextBox Name="replacementPattern" Grid.Row="2" 
+					 TextWrapping="Wrap" AcceptsReturn="True" AutoWordSelection="True"
+					 Text="{Binding ReplacementPattern, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+		</Grid>
+	</Grid>
+</Window>
