@@ -34,5 +34,18 @@ namespace RegexDemoApp.Views
 		}
 
 		private DemoViewModel _viewModel;
+
+		private void inputText_TextChanged(object sender, TextChangedEventArgs e)
+		{
+
+		}
+
+		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			Default.InputText = _viewModel.InputText;
+			Default.RegexPattern = _viewModel.Regex?.ToString();
+			Default.ReplacementPattern = _viewModel.ReplacementPattern;
+			Default.Save();
+		}
 	}
 }

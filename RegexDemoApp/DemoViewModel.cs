@@ -67,13 +67,13 @@ namespace RegexDemoApp
 
 		private async Task<string> PerformTextReplacement(string input, Regex regex, string replacementPattern)
 		{
-			string result = await Task.Run(() => regex.Replace(input, replacementPattern)).ConfigureAwait(false);
+			string result = await Task.Run(() => regex?.Replace(input, replacementPattern)).ConfigureAwait(false);
 			return result;
 		}
 		private Task UpdateReplacedText()
 		{
-			if (Regex == null || InputText == null || ReplacementPattern == null)
-				return Task.CompletedTask;
+			//if (Regex == null || InputText == null || ReplacementPattern == null)
+			//	return Task.CompletedTask;
 
 			//	To avoid the warning about async methods returning immediately, we wrap our "await" code 
 			//		in here and return the task produced by it.

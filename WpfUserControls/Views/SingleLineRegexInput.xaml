@@ -8,9 +8,9 @@
 			 xmlns:components="clr-namespace:NewellClark.Wpf.UserControls.Views.Components"
 			 mc:Ignorable="d" d:DesignWidth="300">
 	
-	<UserControl.DataContext>
+	<!--<UserControl.DataContext>
 		<vms:RegexViewModel/>
-	</UserControl.DataContext>
+	</UserControl.DataContext>-->
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
