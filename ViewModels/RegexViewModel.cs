@@ -275,7 +275,7 @@ namespace NewellClark.ViewModels
 		private bool _isUpdating = false;
 	}
 
-	internal enum RegexError
+	public enum RegexError
 	{
 		None = 0,
 		NullPattern = 1,
