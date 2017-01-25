@@ -19,9 +19,9 @@
 		</Style>
 	</UserControl.Resources>
 
-	<UserControl.DataContext>
+	<!--<UserControl.DataContext>
 		<vms:RegexViewModel/>
-	</UserControl.DataContext>
+	</UserControl.DataContext>-->
 
 	<Grid>
 		<Grid.ColumnDefinitions>

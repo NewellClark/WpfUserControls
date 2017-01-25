@@ -24,6 +24,8 @@ namespace NewellClark.Wpf.UserControls.Views
 	/// Text changes color to indicate when the pattern entered by the user is invalid. 
 	/// Uses a list-box to display the RegexOptions.
 	/// </summary>
+	[Obsolete("Redundant with MultilineRegexInput.")]
+	[EditorBrowsable(EditorBrowsableState.Never)]
 	public partial class RegexInputListBoxOptions : UserControl
 	{
 		public RegexInputListBoxOptions()

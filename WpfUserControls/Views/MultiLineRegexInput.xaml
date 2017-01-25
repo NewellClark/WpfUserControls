@@ -9,9 +9,9 @@
 			 mc:Ignorable="d" 
 			 d:DesignWidth="300"
 			 Name="userControl">
-	<UserControl.DataContext>
+	<!--<UserControl.DataContext>
 		<vms:RegexViewModel/>
-	</UserControl.DataContext>
+	</UserControl.DataContext>-->
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="1*"/>
