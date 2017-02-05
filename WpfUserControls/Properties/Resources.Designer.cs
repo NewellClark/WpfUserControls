@@ -115,7 +115,7 @@ namespace NewellClark.Wpf.UserControls.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ignore pattern whitespace.
+        ///   Looks up a localized string similar to Ignore pattern white space.
         /// </summary>
         public static string regexOptions_ignorePatternWhitespace {
             get {

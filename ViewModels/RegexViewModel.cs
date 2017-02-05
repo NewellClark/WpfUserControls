@@ -17,7 +17,7 @@ namespace NewellClark.ViewModels
 			_multiline = CreateFlag(RegexOptions.Multiline);
 			_explicitCapture = CreateFlag(RegexOptions.ExplicitCapture);
 			_compiled = CreateFlag(RegexOptions.Compiled);
-			_singleline = CreateFlag(RegexOptions.Singleline);
+			_singleLine = CreateFlag(RegexOptions.Singleline);
 			_ignorePatternWhiteSpace = CreateFlag(RegexOptions.IgnorePatternWhitespace);
 			_rightToLeft = CreateFlag(RegexOptions.RightToLeft);
 			_ecmaScript = CreateFlag(RegexOptions.ECMAScript);
@@ -98,14 +98,16 @@ namespace NewellClark.ViewModels
 		}
 		private FlagBool _compiled;
 
-		public bool Singleline
+#pragma warning disable 1704
+		public bool SingleLine
 		{
-			get { return _singleline.Enabled; }
-			set { _singleline.Enabled = value; }
+			get { return _singleLine.Enabled; }
+			set { _singleLine.Enabled = value; }
 		}
-		private FlagBool _singleline;
+		private FlagBool _singleLine;
+#pragma warning restore 1704
 
-		public bool IgnorePatternWhitespace
+		public bool IgnorePatternWhiteSpace
 		{
 			get { return _ignorePatternWhiteSpace.Enabled; }
 			set { _ignorePatternWhiteSpace.Enabled = value; }
@@ -119,7 +121,7 @@ namespace NewellClark.ViewModels
 		}
 		private FlagBool _rightToLeft;
 
-		public bool ECMAScript
+		public bool EcmaScript
 		{
 			get { return _ecmaScript.Enabled; }
 			set { _ecmaScript.Enabled = value; }

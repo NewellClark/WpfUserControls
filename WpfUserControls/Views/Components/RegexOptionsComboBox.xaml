@@ -6,7 +6,11 @@
 			 xmlns:local="clr-namespace:NewellClark.Wpf.UserControls.Views.Components"
 			 mc:Ignorable="d" 
 			 xmlns:resx="clr-namespace:NewellClark.Wpf.UserControls.Properties"
+			 xmlns:vms="clr-namespace:NewellClark.ViewModels;assembly=ViewModels"
 			 x:ClassModifier="internal">
+	<UserControl.DataContext>
+		<vms:RegexViewModel/>
+	</UserControl.DataContext>
 	<Grid>
 		<ComboBox Name="optionsSelector" Grid.Row="0"
 				  SelectedIndex="0" IsReadOnly="True"
@@ -25,16 +29,16 @@
 						  IsChecked="{Binding Compiled, Mode=TwoWay}"
 						  Content="{x:Static resx:Resources.regexOptions_compiled}"/>
 			<CheckBox Name="singleline" 
-						  IsChecked="{Binding Singleline, Mode=TwoWay}"
+						  IsChecked="{Binding SingleLine, Mode=TwoWay}"
 						  Content="{x:Static resx:Resources.regexOptions_singleline}"/>
 			<CheckBox Name="ignorePatternWhitespace"
-						  IsChecked="{Binding IgnorePatternWhitespace}"
+						  IsChecked="{Binding IgnorePatternWhiteSpace}"
 						  Content="{x:Static resx:Resources.regexOptions_ignorePatternWhitespace}"/>
 			<CheckBox Name="rightToLeft" 
 						  IsChecked="{Binding RightToLeft, Mode=TwoWay}"
 						  Content="{x:Static resx:Resources.regexOptions_rightToLeft}"/>
 			<CheckBox Name="ecmaScript"
-						  IsChecked="{Binding ECMAScript, Mode=TwoWay}"
+						  IsChecked="{Binding EcmaScript, Mode=TwoWay}"
 						  Content="{x:Static resx:Resources.regexOptions_ecmaScript}"/>
 			<CheckBox Name="cultureInvariant"
 						  IsChecked="{Binding CultureInvariant, Mode=TwoWay}"

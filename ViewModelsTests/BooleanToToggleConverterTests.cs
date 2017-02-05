@@ -20,7 +20,7 @@ namespace UserControlsTests
 			Color @false = Colors.Red;
 			var converter = new BooleanToToggleConverter<Color>(@true, @false);
 
-			Color result = converter.Convert(true, null, null);
+			Color result = converter.Convert(true);
 
 			Assert.That(@true == result);
 		}
@@ -32,7 +32,7 @@ namespace UserControlsTests
 			Color @false = Colors.Red;
 			var converter = new BooleanToToggleConverter<Color>(@true, @false);
 
-			Color result = converter.Convert(false, null, null);
+			Color result = converter.Convert(false);
 
 			Assert.That(@false == result);
 		}
@@ -44,7 +44,7 @@ namespace UserControlsTests
 			Color @false = Colors.Red;
 			var converter = new BooleanToToggleConverter<Color>(@true, @false);
 
-			bool result = converter.ConvertBack(@true, null, null);
+			bool result = converter.ConvertBack(@true);
 
 			Assert.That(result == true);
 		}
@@ -56,7 +56,7 @@ namespace UserControlsTests
 			Color @false = Colors.Red;
 			var converter = new BooleanToToggleConverter<Color>(@true, @false);
 
-			bool result = converter.ConvertBack(@false, null, null);
+			bool result = converter.ConvertBack(@false);
 
 			Assert.That(result == false);
 		}
@@ -68,7 +68,7 @@ namespace UserControlsTests
 			Color @false = Colors.Red;
 			var converter = new BooleanToToggleConverter<Color>(@true, @false);
 
-			TestDelegate illegal = () => converter.ConvertBack(Colors.Yellow, null, null);
+			TestDelegate illegal = () => converter.ConvertBack(Colors.Yellow);
 
 			Assert.Throws<ArgumentException>(illegal);
 		}

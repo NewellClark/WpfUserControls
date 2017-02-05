@@ -22,9 +22,9 @@ namespace NewellClark.Wpf.UserControls.Views
 	/// <summary>
 	/// Interaction logic for MultiLineRegexInput.xaml
 	/// </summary>
-	public partial class MultiLineRegexInput : UserControl
+	public partial class MultilineRegexInput : UserControl
 	{
-		public MultiLineRegexInput()
+		public MultilineRegexInput()
 		{
 			_textBrushConverter = new BooleanToToggleConverter<Brush>(
 				new SolidColorBrush(Colors.Black),
@@ -68,10 +68,10 @@ namespace NewellClark.Wpf.UserControls.Views
 		}
 		private static void HandleRegexPropertyChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			((MultiLineRegexInput)sender)._viewModel.Regex = (Regex)e.NewValue;
+			((MultilineRegexInput)sender)._viewModel.Regex = (Regex)e.NewValue;
 		}
-		public static DependencyProperty RegexProperty = DependencyProperty.Register(
-			nameof(Regex), typeof(Regex), typeof(MultiLineRegexInput), new PropertyMetadata(HandleRegexPropertyChanged));
+		public static readonly DependencyProperty RegexProperty = DependencyProperty.Register(
+			nameof(Regex), typeof(Regex), typeof(MultilineRegexInput), new PropertyMetadata(HandleRegexPropertyChanged));
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public bool IsValid
@@ -80,7 +80,7 @@ namespace NewellClark.Wpf.UserControls.Views
 			private set { SetValue(_isValidPropertyKey, value); }
 		}
 		private static readonly DependencyPropertyKey _isValidPropertyKey = DependencyProperty.RegisterReadOnly(
-			nameof(IsValid), typeof(bool), typeof(MultiLineRegexInput), new PropertyMetadata(false));
+			nameof(IsValid), typeof(bool), typeof(MultilineRegexInput), new PropertyMetadata(false));
 
 		public Brush ValidTextBrush
 		{
@@ -88,14 +88,14 @@ namespace NewellClark.Wpf.UserControls.Views
 			set { _validTextBrush.Set(value); }
 		}
 		private DesignerOnlyProperty<Brush> _validTextBrush;
-
+#pragma warning disable 1823
 		public Brush InvalidTextBrush
 		{
 			get { return _validTextBrush.Get(); }
 			set { _validTextBrush.Set(value); }
 		}
 		private DesignerOnlyProperty<Brush> _invalidTextBrush;
-
+#pragma warning restore 1823
 		private RegexViewModel _viewModel;
 		private BooleanToToggleConverter<Brush> _textBrushConverter;
 	}

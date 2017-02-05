@@ -61,12 +61,12 @@ namespace NewellClark.Wpf.UserControls
 			return _getter();
 		}
 
-		private void ThrowException(string propertyName)
+		private static void ThrowException(string propertyName)
 		{
 			throw new InvalidOperationException(GetExceptionMessage(propertyName));
 		}
 
-		private string GetExceptionMessage(string propertyName)
+		private static string GetExceptionMessage(string propertyName)
 		{
 			return $"The property '{propertyName}` can only be set inside the designer (and it can be set " +
 				$"once at run-time, during initialization).";

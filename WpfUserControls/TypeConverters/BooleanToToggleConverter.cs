@@ -25,14 +25,14 @@ namespace NewellClark.Wpf.UserControls.TypeConverters
 		public T True { get; set; }
 		public T False { get; set; }
 
-		public T Convert(bool value, object parameter, CultureInfo culture)
+		public T Convert(bool value)
 		{
 			if (value)
 				return True;
 			return False;
 		}
 
-		public bool ConvertBack(T value, object parameter, CultureInfo culture)
+		public bool ConvertBack(T value)
 		{
 			bool? result = null;
 			if (EqualityComparer<T>.Default.Equals(value, True))
@@ -48,13 +48,13 @@ namespace NewellClark.Wpf.UserControls.TypeConverters
 
 		object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			return Convert((bool)value, parameter, culture);
+			return Convert((bool)value);
 		}
 
 		object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			var casted = (T)value;
-			return ConvertBack(casted, parameter, culture);
+			return ConvertBack(casted);
 		}
 	}
 }

@@ -62,7 +62,7 @@
 			</Grid.ColumnDefinitions>
 
 			<Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right">Regex:</Label>
-			<Views:MultiLineRegexInput Name="regex" Grid.Row="0" Grid.Column="1"
+			<Views:MultilineRegexInput Name="regex" Grid.Row="0" Grid.Column="1"
 									   Regex="{Binding Path=Regex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
 			<Label Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right">Replacement pattern:</Label>
