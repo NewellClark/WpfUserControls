@@ -120,7 +120,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RectViewModel.cs" />
     <Compile Include="SizeViewModel.cs" />
     <Compile Include="TypeConverters\BooleanToBrushConverter.cs" />
     <Compile Include="TypeConverters\BooleanToToggleConverter.cs" />
