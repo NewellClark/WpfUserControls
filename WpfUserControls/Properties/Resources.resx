@@ -136,7 +136,7 @@
     <value>Ignore case</value>
   </data>
   <data name="regexOptions_ignorePatternWhitespace" xml:space="preserve">
-    <value>Ignore pattern whitespace</value>
+    <value>Ignore pattern white space</value>
   </data>
   <data name="regexOptions_multiline" xml:space="preserve">
     <value>Multiline</value>

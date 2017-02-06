@@ -31,7 +31,7 @@ namespace UserControlsTests
 		public void Booleans_SetOptions()
 		{
 			var vm = new RegexViewModel();
-			vm.RightToLeft = vm.Singleline = vm.ECMAScript = true;
+			vm.RightToLeft = vm.SingleLine = vm.EcmaScript = true;
 			RegexOptions expected = RightToLeft | Singleline | ECMAScript;
 
 			Assert.That(expected == vm.Options);
@@ -145,7 +145,7 @@ namespace UserControlsTests
 				nameof(vm.Multiline),
 				nameof(vm.IgnoreCase),
 				nameof(vm.RightToLeft),
-				nameof(vm.Singleline),
+				nameof(vm.SingleLine),
 				nameof(vm.ExplicitCapture)
 			};
 
@@ -165,7 +165,7 @@ namespace UserControlsTests
 			{
 				nameof (vm.Compiled),
 				nameof(vm.Multiline),
-				nameof(vm.IgnorePatternWhitespace),
+				nameof(vm.IgnorePatternWhiteSpace),
 				nameof(vm.Options),
 				nameof(vm.Error)
 			};
@@ -216,7 +216,7 @@ namespace UserControlsTests
 				nameof(vm.Pattern),
 				nameof(vm.Options),
 				nameof(vm.IgnoreCase),
-				nameof(vm.IgnorePatternWhitespace),
+				nameof(vm.IgnorePatternWhiteSpace),
 				nameof(vm.Multiline),
 				nameof(vm.IsValid)
 			};
