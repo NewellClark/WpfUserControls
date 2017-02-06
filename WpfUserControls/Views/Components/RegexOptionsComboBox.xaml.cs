@@ -35,6 +35,8 @@ namespace NewellClark.Wpf.UserControls.Views.Components
 			}
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "RegexViewModel")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "RegexOptionsComboBox")]
 		private void optionsSelector_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
 			//if (optionsSelector.DataContext == null)

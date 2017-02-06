@@ -106,6 +106,7 @@
     <Compile Include="Common.cs" />
     <Compile Include="DesignerOnlyProperty.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="PointViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -120,6 +121,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="RectViewModel.cs" />
+    <Compile Include="SizeViewModel.cs" />
     <Compile Include="TypeConverters\BooleanToBrushConverter.cs" />
     <Compile Include="TypeConverters\BooleanToToggleConverter.cs" />
     <Compile Include="TypeConverters\DebugConverter.cs" />
@@ -129,11 +131,17 @@
     <Compile Include="Views\MultiLineRegexInput.xaml.cs">
       <DependentUpon>MultiLineRegexInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PointInputSpinners.xaml.cs">
+      <DependentUpon>PointInputSpinners.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegexInputListBoxOptions.xaml.cs">
       <DependentUpon>RegexInputListBoxOptions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SingleLineRegexInput.xaml.cs">
       <DependentUpon>SingleLineRegexInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SizeInputSpinner.xaml.cs">
+      <DependentUpon>SizeInputSpinner.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -162,11 +170,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PointInputSpinners.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\RegexInputListBoxOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SingleLineRegexInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SizeInputSpinner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

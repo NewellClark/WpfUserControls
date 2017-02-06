@@ -121,6 +121,7 @@ namespace NewellClark.ViewModels
 		}
 		private FlagBool _rightToLeft;
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ecma")]
 		public bool EcmaScript
 		{
 			get { return _ecmaScript.Enabled; }

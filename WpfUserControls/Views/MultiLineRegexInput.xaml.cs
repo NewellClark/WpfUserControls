@@ -88,14 +88,14 @@ namespace NewellClark.Wpf.UserControls.Views
 			set { _validTextBrush.Set(value); }
 		}
 		private DesignerOnlyProperty<Brush> _validTextBrush;
-#pragma warning disable 1823
+
 		public Brush InvalidTextBrush
 		{
 			get { return _validTextBrush.Get(); }
 			set { _validTextBrush.Set(value); }
 		}
 		private DesignerOnlyProperty<Brush> _invalidTextBrush;
-#pragma warning restore 1823
+
 		private RegexViewModel _viewModel;
 		private BooleanToToggleConverter<Brush> _textBrushConverter;
 	}

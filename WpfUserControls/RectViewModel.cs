@@ -28,6 +28,7 @@ namespace NewellClark.Wpf.UserControls
 				() => new Rect(Left, Top, Width, Height),
 				v => { Left = v.Left; Top = v.Top; Width = v.Width; Height = v.Height; });
 		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		public Rect Value
